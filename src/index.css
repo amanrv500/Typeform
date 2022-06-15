@@ -13,43 +13,40 @@ code {
 }
 body{
   background: #F5F5F5;
-  display: flex;
+  position: relative;
 }
 nav{
   width: 100%;
-  height: 5%;
+  height: 5vh;
   top: 0;
   position: fixed;
   display: block;
   display: flex;
   align-items: center;
-  padding: 0 2.5vw;
   background-color: rgb(255, 255, 255);
   border: 0;
   border-bottom: #ececec solid;
 }
-@media (min-height: 200px) {
-  
-}
 
  .logo{
-  justify-items: flex-start;
-  width: 2.5vw;
-  height: 4vh;
+  align-self: flex-start;
+  padding: 5px;
+  width: 40px;
+  height: 3.5vh;
  }
 
 .ar{
-  margin-right: 4rem;
   margin-left: auto;
-  width: 2.5vw;
-  height: 4vh;
+  align-self: flex-end;
+  padding: 5px;
+  width: 40px;
+  height: 3.5vh;
 }
 
 .typeformbar{
   margin-top: 5vh;
   margin-bottom: 2vh;
   display: flex;
-  justify-content: start;
   border: 0;
   border-bottom: #e1e1e1 solid;
   height: 20vh;
@@ -67,7 +64,7 @@ nav{
   cursor: pointer;
   display: inline-flex;
   color: rgb(255, 255, 255);
-  padding: 6px 12px;
+  padding: 6px;
   white-space: nowrap;
   display: flex;
   align-items: center;
