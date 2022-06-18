@@ -2,18 +2,21 @@ import React from "react";
 import {FaPlus} from "react-icons/fa";
 import { BsGrid3X3GapFill } from "react-icons/bs"
 import { HiViewList } from "react-icons/hi"
+import { useNavigate } from "react-router-dom";
+import Popup from "./popup";
 
-const Typeformbar = () =>{
+const Typeformbar = ({onclickaction}) =>{
+   
    return ( 
    <div className="typeformbar">
-         <button className='create-typeform' >
+         <button className='create-typeform' onClick={() => onclickaction()} >
          <FaPlus id="plus-sign"/>
              <h6 id="create-text">Create typeform</h6>
         </button>
         <span className="find">
             <i className="fa fa-search icon sicon"></i>
         <input className="search" placeholder="Find work place or typeform"/>
-        </span>    
+        </span>
 
         <span>
         <select className="date">

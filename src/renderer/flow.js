@@ -1,14 +1,43 @@
 import React from 'react';
 import { useCallback, useState } from 'react';
-import ReactFlow, { applyEdgeChanges, applyNodeChanges,addEdge,MiniMap,Controls,Background } from 'react-flow-renderer';
-
-import initialNodes from './nodes.js';
-import initialEdges from './edges.js';
+import ReactFlow, { applyEdgeChanges, applyNodeChanges,addEdge,Controls,Handle,Position } from 'react-flow-renderer';
 import { BsArrowBarLeft } from 'react-icons/bs';
+import { FaThList } from 'react-icons/fa'
+import UpdaterNode from './updater1.js';
+import UpdaterNode2 from './updater2.js';
+import {useNavigate} from 'react-router-dom';
+
+let newEdges = [
+  { id: 'edge-1', source: 'node-1', target: 'node-2', sourceHandle: 'a' },
+  { id: 'edge-2', source: 'node-1', target: 'node-3', sourceHandle: 'b' }
+]
+
+let initialEdges = [
+  { id: 'e1-2', source: 'a', sourceHandle: 'a', target: 'b' },
+  { id: 'e2-3', source: 'b', sourceHandle: 'b', target: '3' },
+];
+
+
+let initialNodes = [
+  { id: 'node-1', 
+    type: 'UpdaterNode', 
+    position: { x: 0, y: 0 }, 
+    data: { value: 123 },
+    sourcePosition: 'right' },
+    
+  {
+    id: 'node-2',
+    type: 'UpdaterNode2',
+    targetPosition: 'top',
+    position: { x: 200, y: 200 },
+    data: { label: 'node 3' },
+  },
+]
 
 function Flow() {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
+  let Navigate = useNavigate();
 
   const onNodesChange = useCallback(
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
@@ -16,29 +45,39 @@ function Flow() {
   );
   const onEdgesChange = useCallback(
     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [setEdges]
+    [newEdges]
   );
   const onConnect = useCallback(
     (connection) => setEdges((eds) => addEdge(connection, eds)),
     [setEdges]
   );
-  const defaultEdgeOptions = { animated: true };
+
+  const connectask = () => {
+    let initailEdges = [ { id: 'e1-2', source: 'a', sourceHandle: 'a', target: 'b' }, ]
+    Navigate("/rules")
+  }
+
+  const nodeTypes = { UpdaterNode: UpdaterNode ,
+                      UpdaterNode2: UpdaterNode2};
+  const defaultEdgeOptions = { animated: false };
+
 
   return (
-    <ReactFlow
+    <ReactFlow 
       nodes={nodes}
       edges={edges}
       onNodesChange={onNodesChange}
       onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
+      onConnect={onConnect,connectask}
       defaultEdgeOptions={defaultEdgeOptions}
+      nodeTypes={nodeTypes}
       fitView
-    ><MiniMap />
+    >
     <Controls />
-    <Background />
     </ReactFlow>
    
   );
 }
+
 
 export default Flow;

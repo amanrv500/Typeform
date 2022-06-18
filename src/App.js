@@ -1,21 +1,28 @@
 import React from 'react';
-import { BrowserRouter,Route,Link,Routes } from "react-router-dom";
 import './App.css';
-import Navbar from './components/Navbar';
-import Typeformbar from './components/typeformbar';
-import Typeform from './components/typeforms';
-import Flow from './renderer/flow';
+import Homepage from './pages/home';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+} from "react-router-dom";
+import Flowpage from './pages/flowpage';
+import Rules from './pages/rulespage';
+import Loginpage from './pages/loginpage';
+import Notestate from './context/notestate';
 
 function App() {
   return (
-    <div className='App'>
-       <Routes>
-        
+   <Notestate>
+     <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<Loginpage />} />
+          <Route path="/homepage" element={<Homepage />} />
+          <Route path="/flow" element={<Flowpage />} />
+          <Route path="/rules" element={<Rules />} />
       </Routes>
-     <Navbar />
-     <Typeformbar />
-     <Typeform />
-    </div>
+    </BrowserRouter>
+   </Notestate>
   );
 }
 

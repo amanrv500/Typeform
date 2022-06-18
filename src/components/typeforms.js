@@ -1,48 +1,42 @@
-import React, {Component} from "react";
-import newdata from "../newdata";
+import React, { useEffect,useState } from "react";
+import api from '../api/typef'
+import axios from "axios";
 
 
-class Typeform extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            newdata: []
-        }
-    }
+const Typeform = () => {
 
-    componentDidMount() {
-        fetch("./newdata.json").then((res) => res.json())
-            .then((data) => {
-                console.log(data)
+    const [items,setItems]=useState([]);
 
-                this.setState({ newdata: JSON.stringify(data) }, () => {
-                    alert(this.state.hugeText);
-                });
-            })
-    }
+    // const retrieveForms =  async () => {
+    //     const Forms = await api.get("/typeforms");
+    //     return Forms;
+    // }
+    // const getData = async () => {
+    //     const alldata = await retrieveForms();
+    //     if(alldata) setData(alldata);
+    // }
 
-    render() {
-        const newdata = this.state.newdata
-        return (
-            <div className="typeform">
-            <div className="grid1">
-                <p className="type-text">
-                    My typefrom
-                </p>
+      useEffect(()=>{
+        fetch('http://144.24.145.122:3000/forms').then((res) => res.json()).then((data)=> setItems(data))      
+      })
+
     
+
+        return ( 
+           <div className="typeform">
+               {items.map(item=>(
+                    <div key={item.id} className="grid1">
+                        <p className="type-text"> {item.name} </p>
+                        </div>
+                ))}
             </div>
+        )
     
-            <div className="grid2">
-                <p className="type-text">
-                    new typeform
-                </p>
-                
-            </div>
-    
-        </div>
-        );
-    }
 }
 
 export default Typeform;
+
+ 
+
+
