@@ -1,20 +1,22 @@
 import React from "react";
 import {FaPlus} from "react-icons/fa";
 import { BsGrid3X3GapFill } from "react-icons/bs"
+import {BiSearchAlt2} from "react-icons/bi";
 import { HiViewList } from "react-icons/hi"
 import { useNavigate } from "react-router-dom";
 import Popup from "./popup";
+import '../style/typeformbar.css';
 
 const Typeformbar = ({onclickaction}) =>{
    
    return ( 
    <div className="typeformbar">
          <button className='create-typeform' onClick={() => onclickaction()} >
-         <FaPlus id="plus-sign"/>
-             <h6 id="create-text">Create typeform</h6>
+            <FaPlus id="plus-sign" size={0.1}/>
+            <h6 id="create-text">Create typeform</h6>
         </button>
         <span className="find">
-            <i className="fa fa-search icon sicon"></i>
+            <BiSearchAlt2 className="sicon" size={20}/>
         <input className="search" placeholder="Find work place or typeform"/>
         </span>
 

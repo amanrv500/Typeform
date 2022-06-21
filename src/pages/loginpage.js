@@ -2,7 +2,7 @@ import React from 'react';
 import {GoMail} from 'react-icons/go'
 import {RiLockPasswordLine} from 'react-icons/ri'
 import {useNavigate} from 'react-router-dom'
-import Homepage from './home';
+import "../style/loginpage.css"
 
 
 

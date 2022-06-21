@@ -1,5 +1,5 @@
 import Navbar from "../components/Navbar";
-import Aside from "../components/aside";
+import RightSideBar from "../components/rightsidebar";
 import Flow from "../renderer/flow";
 import React from 'react';
 
@@ -11,7 +11,7 @@ const Flowpage = () => {
             <article className="flow">
                 <Flow />
             </article>
-           <Aside />
+           <RightSideBar />
         </div>
     );
 }

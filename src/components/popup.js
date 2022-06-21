@@ -1,11 +1,12 @@
 import React, {useState} from "react";
 import axios from "axios";
 import api from '../api/typef'
+import '../style/popup.css'
 
 
 const Popup = () =>{
 
-   const url = "http://144.24.145.122:3000/forms"
+   const url = "http://localhost:3006/typeforms"
    const [data, setData] = useState({
       name: ""
    })
@@ -26,6 +27,8 @@ const Popup = () =>{
          })
 
    }
+
+   
    return ( 
    <div className="pop">
         <h3 className="type-name">Type the form name </h3>

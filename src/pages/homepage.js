@@ -3,17 +3,10 @@ import Navbar from '../components/Navbar';
 import Typeformbar from '../components/typeformbar';
 import Typeform from '../components/typeforms';
 import Popup from '../components/popup';
+import '../style/homepage.css'
 
 
 const Homepage = () => {
- 
-  // const onclickaction = () => {
-  //   // let popup = document.getElementsByClassName('popup').style.visibility;
-  //   // popup = "visible"
-  //   // console.log("succesful")
-  //   document.getElementsByTagName("popup").style.visibility = "visible";
-  // };
-
   const [isBlur, setisBlur] = useState(true);
   const [pop, setpop] = useState(true);
 
@@ -26,7 +19,7 @@ const Homepage = () => {
   return (
     <div className='Home-page'>
       <div className={isBlur ? 'unblur' : 'blur'}>
-       <Navbar />
+        <Navbar />
         <Typeformbar onclickaction={() => onclickaction()}/>
         <Typeform />
       </div >
