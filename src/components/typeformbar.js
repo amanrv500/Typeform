@@ -12,8 +12,8 @@ const Typeformbar = ({onclickaction}) =>{
    return ( 
    <div className="typeformbar">
          <button className='create-typeform' onClick={() => onclickaction()} >
-            <FaPlus id="plus-sign" size={0.1}/>
-            <h6 id="create-text">Create typeform</h6>
+            <FaPlus id="plus-sign" size={12}/>
+            <p id="create-text">Create typeform</p>
         </button>
         <span className="find">
             <BiSearchAlt2 className="sicon" size={20}/>

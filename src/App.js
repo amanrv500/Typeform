@@ -10,7 +10,7 @@ import Flowpage from './pages/flowpage';
 import Rules from './pages/rulespage';
 import Loginpage from './pages/loginpage';
 import Notestate from './context/notestate';
-import Questionpage from './pages/question';
+import Questionpage from './pages/questionpage';
 
 function App() {
   return (

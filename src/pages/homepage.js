@@ -4,6 +4,7 @@ import Typeformbar from '../components/typeformbar';
 import Typeform from '../components/typeforms';
 import Popup from '../components/popup';
 import '../style/homepage.css'
+import Editpopup from '../components/editpopup';
 
 
 const Homepage = () => {
@@ -25,6 +26,9 @@ const Homepage = () => {
       </div >
       <div className={pop ? 'popup' : 'popvis'}>
       <Popup />
+      </div>
+      <div>
+        <Editpopup />
       </div>
     
     </div>

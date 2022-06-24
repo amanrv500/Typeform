@@ -1,12 +1,15 @@
 .left-sidebar{
-    margin-top: 5vh;
+    margin-top: 0;
     width: 20vw;
     height: 95vh;
     border-right: solid rgb(236, 236, 236);
     background-color: white;
+    justify-self: flex-start;
+    margin-left: 0vw;
+    margin-right: 2.5vw;
 }
 .content{
-    padding: 10px;
+    padding: 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -21,4 +24,13 @@
     box-sizing: border-box;
     margin-top: 10px;
     font-size: small;
+}
+.quesstored{
+    width:20vw;
+    height: 90%;
+}
+.qtype{
+    margin: 20px;
+    border: solid;
+    height: 5%;
 }

@@ -10,7 +10,7 @@ const Nav = () =>{
             ).then(
                 (data)=> setItems(data)
             )      
-    })
+    },[])
    return ( 
    <nav className="navbar">
     <div className="workspace">

@@ -1,11 +1,12 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect,useState,useRef } from "react";
 import api from '../api/typef'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {AiFillEdit} from "react-icons/ai"
 import {AiFillDelete} from "react-icons/ai";
 import '../style/typeforms.css'
-import { BsPatchCheck } from "react-icons/bs";
+import Editpopup from "./editpopup";
+
 
 
 
@@ -13,69 +14,60 @@ import { BsPatchCheck } from "react-icons/bs";
 const Typeform = () => {
 
     let Navigate  = useNavigate();
-    const url = "http://localhost:3006/typeforms/"
-
-    const [names, setNames] = useState({
-        name: " "
-     })
+    const url = `http://localhost:3006/typeforms`
 
     const [items,setItems]=useState([]);
+
+    const [typeid,setTypeid]=useState();
+
+    const [visibility, setVisibility] = useState(false);
+
+    const popupCloseHandler = (e) => {
+        setVisibility(e);
+    };
+
+    
+
+
     useEffect(()=>{
-        fetch(url).then(
-            (res) => res.json()
-            ).then(
-                (data)=> setItems(data)
-            )
-          
-    },[])
-
-    function handle(e){
-        const newdata={...names}
-        newdata[e.target.id] = e.target.value
-        setNames(newdata)
-        console.log(newdata);
-       
-     }
-
-     function submit(e){
-        e.preventDefault();
-        axios.put(url, {
-           name: names.name}
-           ).then(res => {
-              console.log(res.data)
-           })
-           
-     }
+        axios.get(url).then(
+            (res) => {
+            const alldata = res.data;
+             setItems(alldata);
+            });
+    },[typeid])  
 
     return ( 
         <div className="typeform">
-            {items.map(item=>(
-                <div key={item.id} className="grid1"  >
-                    <div className="uper" onClick={()=>Navigate(`/homepage/${item.id}`)}>
+            { items && items.map(item=> {
+                const { id, name } = item;
+                return(
+                    <div key={id} className="grid1"  >
+                    <div className="uper" onClick={()=>Navigate(`/homepage/${id}`)}>
                         <p className="type-text">
-                           {item.name}
+                           {name}
                         </p>
                     </div>
                     <div className='lower'>
-                        
-                        
-                          <span >
-                            <input onChange={(e)=> {setNames(e.target.value)}} id='name' value={names.name} type="text"  className="modify"/>
-                            <input type="submit" onClick={(e) => axios.patch(`http://localhost:3006/typeforms/${item.id}`, {name: names.name} )} />
-                        </span>
-                       
-                        <span onClick={() => axios.delete(`http://localhost:3006/typeforms/${item.id}`)} >
+                        <span onClick={()=>{setTypeid(id);setVisibility(!visibility)}}>
+                           <AiFillEdit className='eddl'/>
+                        </span> 
+                        <span onClick={() => axios.delete(`http://localhost:3006/typeforms/${id}`)} >
                             <AiFillDelete className="eddl"/>
                         </span>
                     </div>
-                </div>
-            ))}
+                    </div>
+                )
+            })}
+             <Editpopup onClose={popupCloseHandler} show={visibility} newid={typeid} />
          </div>
     )
     
 }
 
 export default Typeform;
+
+
 
 
 

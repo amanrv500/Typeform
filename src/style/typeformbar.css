@@ -9,9 +9,9 @@
 }
   
 .create-typeform{
-  width: 12%;
+  width: 10%;
   height: 4.5vh;
-  background: #000000;
+  background: #242424;
   border-radius: 8px;
   justify-content: flex-start;
   margin-left: 3em;
@@ -24,13 +24,12 @@
     align-items: center;
     margin-top: 13vh;
     margin-bottom: auto;
+    border: none;
   }
   
   #plus-sign{
     justify-content: flex-start;
-    padding: 1 px;
-    width: 2vw;
-    height: 2vh;
+    margin: 5px; 
   }
   #create-text{
     justify-content: end;
@@ -41,7 +40,7 @@
   }
   
   .find{
-    width: 20%;
+    width: 18%;
     height: 4vh;
     margin-top: 13vh;
     background: #E1E1E1;
@@ -50,6 +49,7 @@
     display: flex;
     outline: none;
     margin-left: auto;
+    border: none;
   }
   input:focus, textarea {
     outline: none !important;
@@ -83,6 +83,7 @@
     background: #D0D0D0;
     border-radius: 4px;
     cursor: pointer;
+    border: none;
   }
   
   .grid{
@@ -92,11 +93,12 @@
     width: 6vw;
     height: 4vh;
     font-size: 14px;
-    background: #848484;
+    background: #828282;
     border-radius: 4px;
     cursor: pointer;
     color: white;
     outline: none;
+    border: none;
   }
   
   #grid-icon{
@@ -120,5 +122,6 @@
     background: #D0D0D0;
     border-radius: 4px;
     cursor: pointer;
+    border: none;
   }
   
