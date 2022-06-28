@@ -1,6 +1,7 @@
 .right-sidebar{
     position: fixed;
     margin-top: 0;
+    margin-right: 0vw;
     border: solid rgb(235, 235, 235);
     height: 95vh;
     width: 20vw;

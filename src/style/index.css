@@ -56,10 +56,11 @@ body{
   color: #000000;
 }
 .if{
-  background-color: #e6e6e6;
+  background-color: rgb(236, 236, 236);
   padding: 10px;
   margin: 10px;
   height: 60%;
+  border-radius: 5px;
 }
 
 

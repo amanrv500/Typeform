@@ -19,7 +19,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Loginpage />} />
           <Route path="/homepage" element={<Homepage />} />
-          <Route path="/flow" element={<Flowpage />} />
+          <Route path="/homepage/:id/flow" element={<Flowpage />} />
           <Route path="/rules" element={<Rules />} />
           <Route path="/homepage/:id" element={<Questionpage />} />
       </Routes>

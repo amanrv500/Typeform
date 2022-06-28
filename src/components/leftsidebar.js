@@ -1,7 +1,6 @@
 import React,{useState,useEffect,useRef} from "react";
 import { FaPlus } from "react-icons/fa";
 import '../style/leftsidebar.css'
-import Questiontype from "./questiontype";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
@@ -13,7 +12,7 @@ const LeftSideBar = (props) =>{
     const [show, setShow] = useState(false);
     const [items, setItems] = useState([])
 
-    const url = `http://localhost:3006/typeforms/${tid}/questions`
+    const url = `http://localhost:3006/typeforms/${tid}`
 
     useEffect(()=>{
         axios.get(url).then(
@@ -21,7 +20,16 @@ const LeftSideBar = (props) =>{
             const alldata = res.data;
              setItems(alldata);
             });
-    })
+    },[show])
+    
+    // const handleClick = () => {
+    //     axios.post(url , {name: "new"}).then(
+    //         (res) => {
+    //             console.log(res)
+    //         })
+    // }
+    // handleClick()
+    // console.log(handleClick)
     
     return ( 
         <div className="left-sidebar">
@@ -29,22 +37,15 @@ const LeftSideBar = (props) =>{
                 <p >
                     Content
                 </p>
-                <FaPlus className="plus" onClick={() => setShow((s) => !s)} />
+                <FaPlus className="plus" onClick={() => props.changeState((s) => !s)} />
         
              </div>
             <div className="quesstored">
-                {/* {items && items.questions.map(item=> {
-                    const { question} = item;
-                    return(
-                        <div className="qtype">
-                            name: {item.question}
+                {/* {items && items.Questions.map(item=> {
+                        <div key={item.id} className="qtype">
+                            name: {item.QuestionType}
                         </div>
-                    )
                 })}  */}
-
-            </div>
-            <div style={{ visibility: show ? "visible" : "hidden" }}>
-                <Questiontype />
             </div>
         </div>
    );

@@ -2,11 +2,13 @@ import React,{ useState, useEffect} from 'react'
 import '../style/questions.css'
 import axios from 'axios'
 import { useParams,useLocation } from 'react-router-dom'
+import {v4 as uuidv4} from 'uuid';
 
 
 const Questions = () => {
     const param = useParams();
     const tid = param.id;
+    const qid = uuidv4();
 
     const initialValues = {
         question: "",
@@ -32,6 +34,7 @@ const Questions = () => {
           [name]: value,
         });
       };
+      
        
   return (
     <div className="question1"> 
@@ -42,12 +45,21 @@ const Questions = () => {
                 <div>
                     <input onChange={handle} name='choice1' id="choice1" placeholder="choice " className='choice'/> 
                     <input onChange={handle}  name='choice2' id="choice2" placeholder="choice " className='choice'/> 
-                    <input onClick={(e) => axios.patch(`http://localhost:3006/typeforms/${tid}`, { MultipleChoice: { question: ques.question, choice1: ques.choice1 , choice2: ques.choice2} } )} type="submit" className='submit-question'/>
+                    <input onClick={(e) => axios.patch(`http://localhost:3006/typeforms/${tid}`, { 
+                        Questions: [ {
+                            id: qid,
+                            QuestionType: "Multiple Choice",
+                            question: ques.question,
+                            choice1: ques.choice1,
+                            choice2: ques.choice2
+                        }]
+                     } )} type="submit" className='submit-question'/>
                 </div>
             </div>
         </div>
     </div>
   )
 }
+
 
 export default Questions;

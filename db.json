@@ -13,17 +13,17 @@
       "id": "5USjVS3"
     },
     {
-      "name": "neww",
-      "id": "rDq0TpJ",
-      "question": {
-        "question": "new",
-        "answer": "ans"
-      },
-      "MultipleChoice": {
-        "question": "new",
-        "choice1": "ch1",
-        "choice2": "ffff"
-      }
+      "name": "newww form",
+      "id": "TXU0A5X",
+      "Questions": [
+        {
+          "id": "a6580538-0edd-4d40-b1f8-cc6fd22914ce",
+          "QuestionType": "Multiple Choice",
+          "question": "new",
+          "choice1": "mcqch1",
+          "choice2": "ch2"
+        }
+      ]
     }
   ]
 }

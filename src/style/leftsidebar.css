@@ -1,4 +1,5 @@
 .left-sidebar{
+    
     margin-top: 0;
     width: 20vw;
     height: 95vh;
@@ -6,7 +7,6 @@
     background-color: white;
     justify-self: flex-start;
     margin-left: 0vw;
-    margin-right: 2.5vw;
 }
 .content{
     padding: 15px;

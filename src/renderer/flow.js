@@ -34,6 +34,14 @@ let initialNodes = [
   },
 ]
 
+// let elements = [
+//   {id: "1", data: {label: "1"}, position: {x: 0, y: 0}},
+//   {id: "2", data: {label: "2"}, position: {x: 200, y: 200}},
+//   {id: "3", data: {label: "3"}, position: {x: 400, y: 400}},
+//   {id: "e1-e2", source: "1", target: "2"},
+//   {id: "e2-e3", source: "2", target: "3"}
+// ]
+
 function Flow() {
   const [nodes, setNodes] = useState(initialNodes);
   const [edges, setEdges] = useState(initialEdges);
