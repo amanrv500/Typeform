@@ -1,5 +1,5 @@
 import React from "react";
-import { FaThList } from "react-icons/fa";
+
 
 const Leftrules = () =>{
     return ( 

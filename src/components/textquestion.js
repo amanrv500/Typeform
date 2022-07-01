@@ -14,7 +14,7 @@ const Textquestion = () => {
         answer: ""
     };
 
-    const url = `http://localhost:3006/typeforms/${param}`;
+    const url = `http://localhost:3006/Questions`;
     const [ques, setQues] = useState(initialValues)
 
     const handle = (e) => {
@@ -25,18 +25,23 @@ const Textquestion = () => {
         });
       };
 
+    const apost = () => {  
+        axios.post(url, { 
+            id: qid,
+            formID: tid,      
+            QuestionType: "Text",
+            question: ques.question,
+            answer: ques.answer
+        }).then(res => {
+          console.log(res.data)
+       })
+    }
+
   return (
     <div className='question3'>
         <input onChange={handle} id='quest'name='question'  type='text' placeholder='Your questions here' className='textques'/>
         <input onChange={handle} name='answer' id="answer"  type='text' placeholder='Type your answers here'  className='textans'/>
-        <button onClick={(e) => axios.patch(`http://localhost:3006/typeforms/${tid}`, { 
-            Questions: [{
-                id: qid,
-                QuestionType: "Text",
-                question: ques.question,
-                answer: ques.answer
-           }]
-        })} className='btntext'>
+        <button onClick={apost} className='btntext'>
             submit
         </button>
     </div>

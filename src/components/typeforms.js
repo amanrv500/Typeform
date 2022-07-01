@@ -25,10 +25,6 @@ const Typeform = () => {
     const popupCloseHandler = (e) => {
         setVisibility(e);
     };
-
-    
-
-
     useEffect(()=>{
         axios.get(url).then(
             (res) => {

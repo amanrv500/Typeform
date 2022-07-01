@@ -11,6 +11,7 @@ import Rules from './pages/rulespage';
 import Loginpage from './pages/loginpage';
 import Notestate from './context/notestate';
 import Questionpage from './pages/questionpage';
+import Signuppage from './pages/signuppage';
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
       <Routes>
           <Route path="/" element={<Loginpage />} />
           <Route path="/homepage" element={<Homepage />} />
+          <Route path="/Signuppage" element={<Signuppage />} />
+          <Route path="/loginpage" element={<Loginpage />} />
           <Route path="/homepage/:id/flow" element={<Flowpage />} />
           <Route path="/rules" element={<Rules />} />
           <Route path="/homepage/:id" element={<Questionpage />} />

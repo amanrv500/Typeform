@@ -18,8 +18,7 @@ const Popup = () =>{
       console.log(newdata);
    }
 
-   function submit(e){
-      e.preventDefault();
+   function submit(){
       axios.post(url, {
          name: data.name}
          ).then(res => {

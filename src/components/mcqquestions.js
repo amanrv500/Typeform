@@ -1,4 +1,4 @@
-import React,{ useState, useEffect} from 'react'
+import React,{ useState, useEffect,useRef} from 'react'
 import '../style/questions.css'
 import axios from 'axios'
 import { useParams,useLocation } from 'react-router-dom'
@@ -13,20 +13,18 @@ const Questions = () => {
     const initialValues = {
         question: "",
         choice1: "",
-        choice2: ""
+        choice2: "",
+        choice3: "",
+        choice4: ""
     };
    
 
 
 
-    const url = `http://localhost:3006/typeforms/${param}`;
+    const url = `http://localhost:3006/Questions`;
     const [ques, setQues] = useState(initialValues)
 
-    // const [choice1, setChoice1] = useState({
-    //     choice1: " " })
-
-    // const [choice2, setChoice2] = useState({
-    //     choice2: " " }) 
+    
     const handle = (e) => {
         const { name, value } = e.target;
         setQues({
@@ -34,6 +32,24 @@ const Questions = () => {
           [name]: value,
         });
       };
+
+
+    const apost = () => {
+        axios.post(url, {
+            id: qid,
+            formID: tid,
+            QuestionType: "MultipleChoice",
+            question: ques.question,
+            options: { choice1: ques.choice1, choice2: ques.choice2 }
+        }).then(res => {
+            console.log(res.data)
+        } )
+    }
+
+    // const addchoice = () => {
+
+    // }
+
       
        
   return (
@@ -44,16 +60,10 @@ const Questions = () => {
             <div className='choice'>
                 <div>
                     <input onChange={handle} name='choice1' id="choice1" placeholder="choice " className='choice'/> 
-                    <input onChange={handle}  name='choice2' id="choice2" placeholder="choice " className='choice'/> 
-                    <input onClick={(e) => axios.patch(`http://localhost:3006/typeforms/${tid}`, { 
-                        Questions: [ {
-                            id: qid,
-                            QuestionType: "Multiple Choice",
-                            question: ques.question,
-                            choice1: ques.choice1,
-                            choice2: ques.choice2
-                        }]
-                     } )} type="submit" className='submit-question'/>
+                    <input onChange={handle}  name='choice2' id="choice2" placeholder="choice " className='choice'/>
+                    {/* <p id='addchoice' onClick={addchoice}>Add Choice</p> 
+                    <br/> */}
+                    <input onClick={apost} type="submit" className='submit-question'/>
                 </div>
             </div>
         </div>

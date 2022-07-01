@@ -1,4 +1,4 @@
-import React,{useState,useEffect,useRef} from "react";
+import React,{useState,useEffect} from "react";
 import { FaPlus } from "react-icons/fa";
 import '../style/leftsidebar.css'
 import axios from "axios";
@@ -12,7 +12,7 @@ const LeftSideBar = (props) =>{
     const [show, setShow] = useState(false);
     const [items, setItems] = useState([])
 
-    const url = `http://localhost:3006/typeforms/${tid}`
+    const url = `http://localhost:3006/Questions`;
 
     useEffect(()=>{
         axios.get(url).then(
@@ -21,15 +21,6 @@ const LeftSideBar = (props) =>{
              setItems(alldata);
             });
     },[show])
-    
-    // const handleClick = () => {
-    //     axios.post(url , {name: "new"}).then(
-    //         (res) => {
-    //             console.log(res)
-    //         })
-    // }
-    // handleClick()
-    // console.log(handleClick)
     
     return ( 
         <div className="left-sidebar">
