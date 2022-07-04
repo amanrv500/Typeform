@@ -4,23 +4,35 @@ import {RiLockPasswordLine} from 'react-icons/ri'
 import {useNavigate} from 'react-router-dom'
 import "../style/loginpage.css"
 import {FaRegUser} from 'react-icons/fa'
-import axios from 'axios';
+import Customaxios from '../api/customaxios';
+import { Card, Container, Form, Button } from 'react-bootstrap';
 
 
 
 
 const Signuppage = () => {
     const Navigate = useNavigate();
-    const url = "http://localhost:3006/users"
-    const [usr, setUsr] = useState('')
-    const [pwd, setPwd] = useState('')
-    const [email, setEmail] = useState('')
+    const url = "/users"
+    const [cred , setCred] = useState({
+        username: "",
+        email: "",
+        password: ""
+    });
+
+    const update = (e) => {
+        const { name, value } = e.target;
+        setCred({
+          ...cred,
+          [name]: value,
+        });
+    };
+
 
     const submit = () => {
-        axios.post(url, {
-            username: usr,
-            password: pwd,
-            email: email
+        Customaxios.post(url, {
+            username: cred.username,
+            password: cred.password,
+            email: cred.email
         }).then(res => {
             console.log(res.data)
         }
@@ -30,9 +42,9 @@ const Signuppage = () => {
     }
 
     useEffect(() => {
-        console.log(usr, pwd, email)
+        console.log(cred)
 
-    }, [usr, pwd, email])
+    }, [cred])
 
 
 
@@ -40,37 +52,39 @@ const Signuppage = () => {
   return (
   
     <div className='loginpage'>
-      <div className='signin'>
-        <h4 className='welcome'>
-             <pre> Join Typeform! <h5>Create new account</h5></pre>  
-        </h4>
-
-        <label>Email</label>
-        <span className='input'>
-            <GoMail />
-        <input className='input-bar' type='email' placeholder='Email' onChange={(e) => setEmail(e.target.value)}/>
-        </span> 
-
-        <label>Username</label>
-        <span className='input'>
-            <FaRegUser />
-        <input className='input-bar' type='text' placeholder='username' onChange={(e) => setUsr(e.target.value)}/>
-        </span>  
-
-        <label>Password</label>
-        <span className='input'>
-            <RiLockPasswordLine />
-        <input  className='input-bar' type='password' placeholder='password' onChange={(e) => setPwd(e.target.value)}/>
-        </span>  
-       
-        <button className='sub-btn' type='submit' value='Sign Up' onClick={submit}> Sign Up </button>
-
-        <label className='label'>Already Have Account Login Here!</label>
-        <button className='login-btn' onClick={() => Navigate('/loginpage')}>Login</button>
-
-      </div>
-    
+    <div className='newsignup d-flex 
+    justify-content-center align-items-center'>
+      
+      <Form className='rounded p-4 p-sm-3 h-80 w-50'>
+          <h3 className='text-center'>Join Typeform</h3>
+          <h6 className='text-center'>Create new Account!</h6>
+          <Form.Group className='mb-3' controlId="formBasicUsername">
+              <Form.Label>
+                  Username
+              </Form.Label>
+              <Form.Control type="text" placeholder="Username" onChange={update}  name='username'/>
+          </Form.Group>
+          <Form.Group className='mb-3 ' controlId="formBasicEmail">
+              <Form.Label>
+                  Email address
+              </Form.Label>
+              <Form.Control type="email" placeholder="Enter email" onChange={update} name='email'/>
+          </Form.Group>
+          <Form.Group className='mb-3' controlId="formBasicPassword">
+              <Form.Label>
+                  Password
+              </Form.Label>
+              <Form.Control type="password" placeholder="Password" onChange={update} name='password'/>
+          </Form.Group>
+         <div className='text-center'>
+         <Button type="submit" onClick={submit} className='mb-3 w-50 btn-primary' >Sign Up</Button>
+          <h6> Already Have a Account Login Here!</h6>
+          <Button variant="primary" type="submit" onClick={() => Navigate('/')} className='w-50'>Login</Button>
+         </div>
+      </Form>
     </div>
+  </div>
+  
     
     
   );

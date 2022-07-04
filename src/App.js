@@ -12,6 +12,9 @@ import Loginpage from './pages/loginpage';
 import Notestate from './context/notestate';
 import Questionpage from './pages/questionpage';
 import Signuppage from './pages/signuppage';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import NewSignuppage from './pages/newsignup';
+
 
 function App() {
   return (

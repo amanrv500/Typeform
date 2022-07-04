@@ -59,8 +59,8 @@ const Questions = () => {
             <input placeholder='Description (optional)' className='description'/>
             <div className='choice'>
                 <div>
-                    <input onChange={handle} name='choice1' id="choice1" placeholder="choice " className='choice'/> 
-                    <input onChange={handle}  name='choice2' id="choice2" placeholder="choice " className='choice'/>
+                    <input onChange={handle} type='text' name='choice1' id="choice1" placeholder="choice " className='choice'/> 
+                    <input onChange={handle} type='text' name='choice2' id="choice2" placeholder="choice " className='choice'/>
                     {/* <p id='addchoice' onClick={addchoice}>Add Choice</p> 
                     <br/> */}
                     <input onClick={apost} type="submit" className='submit-question'/>

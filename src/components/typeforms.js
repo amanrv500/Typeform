@@ -1,5 +1,4 @@
 import React, { useEffect,useState,useRef } from "react";
-import api from '../api/typef'
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import {AiFillEdit} from "react-icons/ai"

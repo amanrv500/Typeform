@@ -1,5 +1,5 @@
 .left-sidebar{
-    
+    position: fixed;
     margin-top: 0;
     width: 20vw;
     height: 95vh;
@@ -9,7 +9,7 @@
     margin-left: 0vw;
 }
 .content{
-    padding: 15px;
+    padding: 25px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -26,11 +26,21 @@
     font-size: small;
 }
 .quesstored{
-    width:20vw;
+    width:15vw;
     height: 90%;
 }
 .qtype{
     margin: 20px;
-    border: solid;
     height: 5%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.qico{
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    margin:5px;
 }

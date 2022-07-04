@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import axios from "axios";
-import api from '../api/typef'
+
 import '../style/popup.css'
 
 
