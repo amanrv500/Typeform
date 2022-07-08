@@ -17,9 +17,6 @@ const Questions = () => {
         choice3: "",
         choice4: ""
     };
-   
-
-
 
     const url = `http://localhost:3006/Questions`;
     const [ques, setQues] = useState(initialValues)

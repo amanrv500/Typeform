@@ -1,14 +1,23 @@
 import React from "react";
+import { Navbar, Nav  } from "react-bootstrap";
 import '../style/navbar.css'
 
-
-const Navbar = () =>{
+const Navbar1 = () =>{
    return ( 
-   <nav className="navbar">
-      <img src={require('../assets/Logo3.png')} className="logo" alt="logo"/>
-      <img src={require('../assets/ar.jpg')} className="ar" alt="ar"/>
-   </nav>
+      <Navbar className="topnav p-0" variant="info">
+         <Nav className="container-fluid">
+            <Nav.Item>
+               <Navbar.Brand>
+                  <img src={require('../assets/Logo3.png')} width="30" height="30" className="m-2 mb-0 mt-0 align-top" alt="logo"/>
+               </Navbar.Brand>
+            </Nav.Item>
+            <Nav.Item className="ml-auto">
+               <Nav.Link>
+                  <img src={require('../assets/ar.jpg')}  width="30" height="30" className=" align-top"  alt="ar"/>
+               </Nav.Link>
+            </Nav.Item>
+         </Nav>
+      </Navbar>
    );
-}
-
-export default Navbar;
+}  
+export default Navbar1;

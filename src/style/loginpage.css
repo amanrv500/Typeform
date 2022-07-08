@@ -12,11 +12,17 @@
     height: 100%;
     mix-blend-mode: normal;
 }
-.btn-primary{
-    background-color: rgb(166, 188, 255);
+.btn-purple{
+    background-color: rgb(138, 167, 255);
     border-color: rgb(166, 188, 255);
 }
-form{
+
+.btn-purple:hover{
+    background-color: rgb(111, 147, 255);
+    border-color: rgb(123, 156, 255);
+}
+
+.loginform{
     background-color: white;
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
 }

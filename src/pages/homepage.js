@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import Navbar from '../components/Navbar';
+import Navbar1 from '../components/Navbar';
 import Typeformbar from '../components/typeformbar';
 import Typeform from '../components/typeforms';
 import Popup from '../components/popup';
@@ -20,7 +20,7 @@ const Homepage = () => {
   return (
     <div className='Home-page'>
       <div className={isBlur ? 'unblur' : 'blur'}>
-        <Navbar />
+        <Navbar1 />
         <Typeformbar onclickaction={() => onclickaction()}/>
         <Typeform />
       </div >
@@ -30,7 +30,6 @@ const Homepage = () => {
       <div>
         <Editpopup />
       </div>
-    
     </div>
   );
 }

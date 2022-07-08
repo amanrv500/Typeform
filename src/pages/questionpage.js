@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import Nav from "../components/nav";
+import Nav1 from "../components/nav";
 import RightSideBar from '../components/rightsidebar';
 import LeftSideBar from '../components/leftsidebar';
 import Questions from '../components/mcqquestions';
@@ -11,6 +11,7 @@ import{IoIosQuote} from 'react-icons/io'
 import { CgTranscript} from 'react-icons/cg'
 import{AiOutlineCheck} from 'react-icons/ai'
 import { FaPlus } from 'react-icons/fa';
+import { Col, Container, Row } from 'react-bootstrap';
 
 const Questionpage = () => {
     const [text, setText] = useState(false);
@@ -18,35 +19,36 @@ const Questionpage = () => {
     const [statement, setStatement] = useState(false);
     const [show, setShow] = useState(false);
 
-    const TextClick = (e) => {
-        setText(true)
-        setMcq(false)
-        setStatement(false)
-    };
-    const McqClick = (e) => { 
-        setText(false)
-        setMcq(true)
-        setStatement(false)
-    };
-    const StatementClick = (e) => {
-        setText(false)
-        setMcq(false)
-        setStatement(true)
-    };
+   
 
     return (
-        <div className="questionpage">
-            <Nav />
-            <div className="contents"> 
+        <div >
+            <Nav1 />
+            <Container fluid className='mx-0 p-0'>
+                <Row className='h-100'>
+                    <Col className='border p-0 m-0' lg='2'>
+                        <LeftSideBar changeStateMcq={mcq => setMcq(mcq)} changeStatText={text => setText(text)} changeStateStatment={statement => setStatement(statement)}/> 
+                    </Col>
+                    <Col className='border' lg='8'>
+                        <div style={{ display: mcq ? "flex" : "none" }}>
+                            <Questions />
+                        </div>
+                        <div style={{ display: text ? "flex" : "none" } }>
+                            <Textquestion />
+                        </div>
+                        <div style={{ display: statement ? "flex" : "none" }}>
+                            <Statementquestion />  
+                        </div> 
+                    </Col>
+                    <Col className='border ps-0' lg='2'>
+                        <RightSideBar />
+                    </Col>
+                </Row>
+            </Container>
+
+            {/* <div className="contents"> 
                 <LeftSideBar changeState={show => setShow(show)}/>
 
-                    {/* <div className='middlesection'>
-
-                        <div>
-                        <FaPlus className="plus"  onClick={() => setShow((s) => !s)} />
-                        </div>
-
-                    </div> */}
                     <div style={{ display: mcq ? "flex" : "none" }}>
                         <Questions />
                     </div>
@@ -73,9 +75,10 @@ const Questionpage = () => {
                 <span className='qicons' onClick={(e) => StatementClick(e)}>
                     <IoIosQuote className='sticon' />Statement
                 </span>
-            </div>
+            </div> */}
         </div>
     );
 }
 
 export default Questionpage;
+

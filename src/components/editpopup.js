@@ -47,14 +47,3 @@ export default Editpopup;
 
 
 
-// return (
-// <div>
-//     <div className="editpopup">
-//         <h3 className="edit-text">Change the form name </h3>
-       
-        
-//     </div>
-// </div>
-// )
-
-//<div className='editcontent'>contttntnt</div>

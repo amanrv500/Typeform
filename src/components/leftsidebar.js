@@ -5,7 +5,11 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import {FaQuoteRight} from "react-icons/fa"
 import { CgTranscript} from 'react-icons/cg'
-import{FaCheck} from 'react-icons/fa'
+import { AiOutlineCheck} from 'react-icons/ai'
+import {IoIosQuote} from "react-icons/io"
+import {FaCheck} from "react-icons/fa"
+import { Col, Row, DropdownButton, ButtonGroup, Dropdown,Button } from "react-bootstrap";
+import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
 
 
 
@@ -34,45 +38,70 @@ const LeftSideBar = (props) =>{
         }
     };
 
-    newdata.map(item => {
-        console.log(item.id)
-    })
-    console.log('hey')
+    const TextClick = (e) => {
+        props.changeStatText(true);
+        props.changeStateMcq(false);
+        props.changeStateStatment(false);
+        
+    };
+    const McqClick = (e) => { 
+        props.changeStatText(false);
+        props.changeStateMcq(true);
+        props.changeStateStatment(false);
+    };
+    const StatementClick = (e) => {
+        props.changeStatText(false);
+        props.changeStateMcq(false);
+        props.changeStateStatment(true);
+    };
+
+   
     return ( 
-        <div className="left-sidebar">
-            <div className="content">
-                <p >
+        <>
+            <Row className="d-flex align-items-center justify-content-between m-0 ps-3 pe-0 py-3">
+                <Col lg='8'>
                     Content
-                </p>
-                <FaPlus className="plus" onClick={() => props.changeState((s) => !s)} />
-            </div>
-            <div className="quesstored">
+                </Col>
+                <Col lg='4' className="d-flex justify-content-end">
+                <Dropdown>
+                    <Dropdown.Toggle variant="none" id="dropdown-basic">
+                        <FaPlus className="plus" onClick={() => props.changeState((s) => !s)}/>
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu >
+                        <Dropdown.Item onClick={TextClick}><CgTranscript className='ticon' />Text</Dropdown.Item>
+                        <Dropdown.Item onClick={McqClick}> <AiOutlineCheck className='micon'/> Multiple Choice</Dropdown.Item>
+                        <Dropdown.Item onClick={StatementClick}> <IoIosQuote className='sticon' />Statement</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                </Col>
+            </Row>
+            <Row className="m-0 p-0 d-flex justify-content-start">
                 {newdata.map(item=> 
-                {
-                    const { id, QuestionType,question } = item;
-                    return(
-                    <div key={id} className="qtype">
-                        {(() =>{
-                            if(QuestionType=="Text")
-                            return (
-                                <span className="qico"><CgTranscript className="ticon"/>{question}</span>
-                            )
-                            else if(QuestionType=="MultipleChoice")
-                            return (
-                                <span className="qico"><FaCheck className="micon"/>{question}</span>
-                            )
-                            else if(QuestionType=="Statement")
-                            return (
-                                <span className="qico"><FaQuoteRight className="sticon"/>{question}</span>
-                            )
-                        })()}
-                    </div>
-                    )
-                }
+                    {
+                        const { id, QuestionType,question } = item;
+                        return(
+                            <div key={id} className="qtype">
+                                {(() =>{
+                                    if(QuestionType=="Text")
+                                        return (
+                                            <span className="qico"><CgTranscript className="ticon"/>{question}</span>
+                                        )
+                                    else if(QuestionType=="MultipleChoice")
+                                        return (
+                                            <span className="qico"><FaCheck className="micon"/>{question}</span>
+                                        )
+                                    else if(QuestionType=="Statement")
+                                        return (
+                                        <span className="qico"><FaQuoteRight className="sticon"/>{question}</span>
+                                        )
+                                })()}
+                            </div>
+                        )
+                    }
                 )
                 }
-            </div>
-        </div>
+            </Row>
+         </>  
    );
 }
 

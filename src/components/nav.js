@@ -1,45 +1,54 @@
-import axios from "axios";
+import customaxios from "../api/customaxios";
 import React, {useEffect, useState} from "react";
 import '../style/navbar.css'
 import {useParams} from "react-router-dom";
+import { Navbar, Nav, Container } from "react-bootstrap";
 
 
-const Nav = () =>{
+const Nav1 = () =>{
 
     const param = useParams();
     const tid = param.id;
     const [items,setItems]=useState([]);
 
     useEffect(()=>{
-        axios.get(`http://localhost:3006/typeforms/${tid}`).then(
+        customaxios.get(`typeforms/${tid}`).then(
             (res) => {
             const alldata = res.data;
              setItems(alldata);
             });      
     },[])
 
-   return ( 
-   <nav className="navbar">
-    <div className="workspace">
-        <p>{`My workspace  / ${items.name}`}</p>   
-    </div>
-    <div className="middle">
-        <p className="create highlight">
-            Create
-        </p>
-        <p className="create">
-            Connect
-        </p>
-        <p className="create">
-            Share
-        </p>
-        <p className="create">
-            Result
-        </p>
-    </div>
-      <img src={require('../assets/ar.jpg')} className="ar" alt="ar"/>
-   </nav>
+   return (
+    <Navbar className="topnav p-0" variant="light">
+        <Nav className="container-fluid d-flex p-0">
+            <Nav.Item>
+                <Navbar.Brand >
+                    <p className="workspace ps-2 fs-6 fs-sm-8">My Workspace / </p><p className="d-inline fs-6 fs-sm-8">{items.name}</p>
+                </Navbar.Brand>
+            </Nav.Item>
+            <Nav.Item className="d-flex my-0">
+                <Nav.Link className="middle">
+                    Create
+                </Nav.Link>
+                <Nav.Link className="middle">
+                    Connect
+                </Nav.Link>
+                <Nav.Link className="middle">
+                    Share
+                </Nav.Link>
+                <Nav.Link className="middle">
+                    Result
+                </Nav.Link>
+            </Nav.Item>
+            <Nav.Item className="ml-auto">
+                <Nav.Link>
+                    <img src={require('../assets/ar.jpg')}  width="30" height="30" className="align-top"  alt="ar"/>
+                </Nav.Link>
+            </Nav.Item>
+        </Nav>
+    </Navbar>
    );
 }
 
-export default Nav;
+export default Nav1;

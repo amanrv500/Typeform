@@ -1,4 +1,5 @@
 import React from "react";
+import { Container, Row, Col, Stack } from "react-bootstrap";
 import {AiTwotoneSetting} from "react-icons/ai"
 import { useNavigate, useParams } from "react-router-dom";
 import '../style/rightsidebar.css'
@@ -9,14 +10,20 @@ const RightSideBar = () =>{
   const tid = param.id;
   
    return ( 
-   <div className="right-sidebar">
-    <div className="setting">
-      <h3 onClick={()=>Navigate(`/homepage/${tid}`)}>Question</h3>
-      <h3 onClick={()=>Navigate(`/homepage/${tid}`)}>Design</h3>
-      <h3 onClick={()=>Navigate(`/homepage/${tid}/flow`)}>Logic</h3>
-      <AiTwotoneSetting className="icon"/>
+    <div>
+      <Stack direction="horizontal" gap={3} className='p-2 border-bottom d-flex justify-content-center' >
+        <p className="setting mb-0 " onClick={()=>Navigate(`/homepage/${tid}`)} >
+            Question
+        </p>
+        <p className="setting mb-0"  onClick={()=>Navigate(`/homepage/${tid}`)} >
+            Design
+        </p>
+        <p className="setting mb-0"  onClick={()=>Navigate(`/homepage/${tid}/flow`)} >
+            Logic
+        </p>
+        <AiTwotoneSetting  className="setting"  />
+      </Stack>
     </div>
-   </div>
    );
 }
 
