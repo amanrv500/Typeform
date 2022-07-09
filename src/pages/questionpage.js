@@ -40,8 +40,8 @@ const Questionpage = () => {
                             <Statementquestion />  
                         </div> 
                     </Col>
-                    <Col className='border ps-0' lg='2'>
-                        <RightSideBar />
+                    <Col className='border ' lg='2' >
+                        <RightSideBar changeStateMcq={mcq => setMcq(mcq)} changeStatText={text => setText(text)} changeStateStatment={statement => setStatement(statement)}/>
                     </Col>
                 </Row>
             </Container>

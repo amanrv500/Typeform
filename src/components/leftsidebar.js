@@ -10,6 +10,7 @@ import {IoIosQuote} from "react-icons/io"
 import {FaCheck} from "react-icons/fa"
 import { Col, Row, DropdownButton, ButtonGroup, Dropdown,Button } from "react-bootstrap";
 import DropdownMenu from "react-bootstrap/esm/DropdownMenu";
+import DropdownToggle from "react-bootstrap/esm/DropdownToggle";
 
 
 
@@ -63,10 +64,10 @@ const LeftSideBar = (props) =>{
                     Content
                 </Col>
                 <Col lg='4' className="d-flex justify-content-end">
-                <Dropdown>
-                    <Dropdown.Toggle variant="none" id="dropdown-basic">
+                <Dropdown drop="end">
+                    <DropdownToggle variant="none">
                         <FaPlus className="plus" onClick={() => props.changeState((s) => !s)}/>
-                    </Dropdown.Toggle>
+                    </DropdownToggle>
                     <Dropdown.Menu >
                         <Dropdown.Item onClick={TextClick}><CgTranscript className='ticon' />Text</Dropdown.Item>
                         <Dropdown.Item onClick={McqClick}> <AiOutlineCheck className='micon'/> Multiple Choice</Dropdown.Item>

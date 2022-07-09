@@ -24,12 +24,12 @@ const Homepage = () => {
         <Typeformbar onclickaction={() => onclickaction()}/>
         <Typeform />
       </div >
-      <div className={pop ? 'popup' : 'popvis'}>
+      {/* <div className={pop ? 'popup' : 'popvis'}>
       <Popup />
       </div>
       <div>
         <Editpopup />
-      </div>
+      </div> */}
     </div>
   );
 }

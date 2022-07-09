@@ -7,15 +7,11 @@
 }
 
 .grid1{
-    height: 25vh;
-    width: 12vw;
+    height: 10rem;
+    width: 11rem;
     background: #FFFFFF;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.14);
-    border-radius: 15px;
     cursor: pointer;
-    display: flex;
-    margin: 10px;
-    flex-direction: column;
 }
 
 .lower{
@@ -38,7 +34,7 @@
 }
 
 .eddl{
-    color: rgb(160, 160, 160);
+    color: #a0a0a0;
 }
   
 .grid1:hover{
