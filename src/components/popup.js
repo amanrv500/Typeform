@@ -1,40 +1,45 @@
 import React, {useState} from "react";
-import axios from "axios";
+import customaxios from "../api/customaxios";
+import { Modal,Button, FormControl } from "react-bootstrap";
 
-import '../style/popup.css'
 
+const Popup = (props) =>{
 
-const Popup = () =>{
-
-   const url = "http://localhost:3006/typeforms"
+   const url = "/typeforms"
    const [data, setData] = useState({
       name: ""
    })
 
-   function handle(e){
+   const handle = (e) => {
       const newdata={...data}
       newdata[e.target.id] = e.target.value
       setData(newdata)
       console.log(newdata);
    }
 
-   function submit(){
-      axios.post(url, {
+   const submit = () => {
+      customaxios.post(url, {
          name: data.name}
          ).then(res => {
             console.log(res.data)
          })
+         props.onHide();
    }
-
    
-   return ( 
-   <div className="pop">
-        <h3 className="type-name">Type the form name </h3>
-       <form onSubmit={(e) => submit(e)}>
-       <input onChange={(e) => handle(e)} id='name' value={data.name} type="text" className="input-typeform-name" />
-       <input type='submit' className="typeform-submit" />
-       </form>
-   </div>
+   return (
+        <Modal {...props} size="md" centered >
+            <Modal.Header closeButton>
+               <Modal.Title id="contained-modal-title-vcenter">
+                    Type the form Name
+                </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <FormControl onChange={(e) => handle(e)} id='name' type="text"  placeholder="Enter the Name Here!" style={{border: "none"}}/>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={(e) => submit(e)}>Create</Button>
+            </Modal.Footer>
+        </Modal>
    );
 }
 

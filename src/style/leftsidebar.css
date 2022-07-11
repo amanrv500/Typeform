@@ -1,3 +1,13 @@
+.dt:after {
+     display: none !important;
+     outline: none !important;
+     box-shadow: none !important;
+}
+/* .dropdown-toggle:focus {
+     outline: none !important;
+     box-shadow: none !important;
+} */
+
 
 .plus{
     border-radius: 4px;

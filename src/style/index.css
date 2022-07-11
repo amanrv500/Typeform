@@ -63,6 +63,10 @@ body{
   border-radius: 5px;
 }
 
+.txt{
+    font-size: 1rem !important;
+}
+
 /* for smaller than sm */
 @media (max-width: 576px) {
     .w-xs-100 {
@@ -102,7 +106,7 @@ body{
         height: 25% !important;
     }
     .txt {
-        font-size: 0.5rem !important;
+        font-size: 0.72rem !important;
     }
 }
 
@@ -267,10 +271,6 @@ body{
 }
 }
 
-.txt{
-    font-size: 1rem !important;
-}
-
 .w-10 {
     width: 10% !important;
 }
@@ -371,6 +371,15 @@ body{
     height: 100% !important;
     width: 100% !important;
 }
+.btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+.form-control:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
 
 
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {FaPlus} from "react-icons/fa";
 import { BsGrid3X3GapFill } from "react-icons/bs"
 import {BiSearchAlt2} from "react-icons/bi";
@@ -7,8 +7,10 @@ import { BsPencilFill } from "react-icons/bs";
 import {AiOutlineClockCircle} from "react-icons/ai";
 import {TiSortAlphabetically} from "react-icons/ti";
 import { Container,Row,Col, Button,Form,Dropdown,DropdownButton } from "react-bootstrap";
+import Popup from "./popup";
 
-const Typeformbar = ({onclickaction}) =>{
+const Typeformbar = () =>{
+    const [show, setShow] = useState(false);
    
    return ( 
     <Container fluid className="h-50 mt-25 border-bottom bg-light" >
@@ -17,7 +19,7 @@ const Typeformbar = ({onclickaction}) =>{
         <br/>
         <Row className="px-2">
             <Col className="p-0 mx-0" md='3' lg='3' xl='3' sm='4' xs='5' >
-                <Button variant="dark" className="d-flex justify-content-center mx-0 " onClick={() => onclickaction()}>
+                <Button variant="dark" className="d-flex justify-content-center mx-0 " onClick={() => setShow(true)}>
                     <span className="d-flex align-items-center justify-content-between">
                         <FaPlus className='mx-2 '/>
                         <span className="txt" >Create Typeform</span>
@@ -30,8 +32,8 @@ const Typeformbar = ({onclickaction}) =>{
                     <Form.Control type="text" className=" bg-light w-90 mx-auto h-xs-75" style = {{ border:"black", boxShadow: 'none'}} placeholder="Find Typeform" />
                 </span>
             </Col>
-            <Col className="d-md-flex d-sm-flex d-none justify-content-end" lg='2' xl='2' md='3' sm='2'>
-                <DropdownButton className="w-40"  variant="grey-100" title="Date Created" style = {{ border:"black", boxShadow:"black",backgroundColor:"#E3E3E3",outline:"none"}}>
+            <Col className="d-md-flex d-sm-flex d-lg-flex d-none  justify-content-end" lg='2' xl='2' md='3' sm='2'>
+                <DropdownButton className=""  variant="grey-100" title="Date Created" style = {{ border:"black", boxShadow:"black",backgroundColor:"#E3E3E3",outline:"none"}}>
                     <Dropdown.Item >
                         <span className="d-flex align-items-center" >
                             <AiOutlineClockCircle color="#737373" className="p-0 me-1"/>
@@ -60,7 +62,7 @@ const Typeformbar = ({onclickaction}) =>{
                             Grid
                         </span>
                     </Button>
-                    <Button variant="none" style = {{ border:"black", boxShadow:"black",backgroundColor:"#E3E3E3",outline:"none"}}>
+                    <Button variant="none" style = {{backgroundColor:"#E3E3E3"}}>
                         <span className="d-flex align-items-center">
                             <HiViewList  className="p-0 me-1"/>
                             List
@@ -70,6 +72,10 @@ const Typeformbar = ({onclickaction}) =>{
             </Col>
         </Row>
         <br/>
+        <Popup
+        show={show}
+        onHide={() => setShow(false)}
+        />
     </Container>
    );
 }

@@ -1,20 +1,22 @@
 import React,{ useState, useEffect} from 'react'
 import '../style/textquestion.css'
-import axios from 'axios'
+import customaxios from '../api/customaxios';
 import { useParams,useLocation } from 'react-router-dom'
 import{v4 as uuidv4} from 'uuid';
 
 const Textquestion = () => {
+  const url = "/Questions";
     const param = useParams();
     const tid = param.id;
     const qid = uuidv4();
+    const [count , setCount] = useState(1);
 
     const initialValues = {
         question: "",
         answer: ""
     };
 
-    const url = `http://localhost:3006/Questions`;
+   
     const [ques, setQues] = useState(initialValues)
 
     const handle = (e) => {
@@ -26,8 +28,8 @@ const Textquestion = () => {
       };
 
     const apost = () => {  
-        axios.post(url, { 
-            id: qid,
+        customaxios.post(url, { 
+            id: count,
             formID: tid,      
             QuestionType: "Text",
             question: ques.question,
@@ -35,6 +37,7 @@ const Textquestion = () => {
         }).then(res => {
           console.log(res.data)
        })
+      setCount(count + 1);
     }
 
   return (

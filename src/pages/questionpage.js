@@ -19,8 +19,6 @@ const Questionpage = () => {
     const [statement, setStatement] = useState(false);
     const [show, setShow] = useState(false);
 
-   
-
     return (
         <div >
             <Nav1 />

@@ -1,8 +1,9 @@
 import customaxios from "../api/customaxios";
 import React, {useEffect, useState} from "react";
 import '../style/navbar.css'
+import {ar } from '../assets';
 import {useParams} from "react-router-dom";
-import { Navbar, Nav, Container } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 
 
 const Nav1 = () =>{
@@ -43,7 +44,7 @@ const Nav1 = () =>{
             </Nav.Item>
             <Nav.Item className="ml-auto">
                 <Nav.Link>
-                    <img src={require('../assets/ar.jpg')}  width="30" height="30" className="align-top"  alt="ar"/>
+                    <img src={ar}  width="30" height="30" className="align-top"  alt="ar"/>
                 </Nav.Link>
             </Nav.Item>
         </Nav>

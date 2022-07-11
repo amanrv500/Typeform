@@ -1,13 +1,15 @@
 import React,{ useState, useEffect} from 'react'
 import '../style/statementquestion.css'
-import axios from 'axios'
+import customaxios from '../api/customaxios';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams,useLocation } from 'react-router-dom'
 
 
 const Statementquestion = () => {
+  const url = "/Questions";
     const param = useParams();
     const tid = param.id;
+    const [count, setCount] = useState(1);
 
     const initialValues = {
         question: "",
@@ -27,15 +29,16 @@ const Statementquestion = () => {
 
    
     const apost = () => {
-        axios.post(`http://localhost:3006/Questions`, {
-            id: Qid,
+        customaxios.post(url, {
+            id: count,
             formID: tid,
             QuestionType: "Statement",
             question: ques.question,
             answer: ques.answer
         }).then(res => {
             console.log(res.data)
-        } )
+        })
+        setCount(count + 1);
     }
 
   return (
