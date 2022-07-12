@@ -29,7 +29,6 @@ const LeftSideBar = (props) =>{
             const alldata = res.data;
              setItems(alldata);
             });
-        
     },[])
 
     for(let i=0;i<items.length;i++){
@@ -59,7 +58,7 @@ const LeftSideBar = (props) =>{
         <>
             <Row className="d-flex align-items-center justify-content-between m-0 ps-3 pe-0 py-3">
                 <Col lg='8'>
-                    Content
+                    <span className="h6" style={{fontWeight: "500"}}>Content</span>
                 </Col>
                 <Col lg='4' className="d-flex justify-content-end">
                 <Dropdown drop="end">
@@ -107,7 +106,9 @@ const LeftSideBar = (props) =>{
                                                     <CgTranscript/>
                                                     {id}
                                                 </span>
-                                                {question}
+                                                <span className="fs-sm" style={{fontSize:"12px"}}> 
+                                                    {question}
+                                                </span>
                                             </span>
                                         )
                                     else if(QuestionType==="MultipleChoice")

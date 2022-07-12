@@ -84,7 +84,7 @@ const RightSideBar = (props) =>{
             <Row className="p-4">
                 Type
             </Row>
-            <Row className="w-100 h-10">
+            <Row className="w-100">
                 <Select defaultValue="Choose" formatOptionLabel={formatOptionLabel} options={data} />
             </Row>
             <Row className="border-top mt-5 px-0 font">

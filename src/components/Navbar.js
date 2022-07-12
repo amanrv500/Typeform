@@ -5,7 +5,7 @@ import { logo, ar  } from '../assets';
 
 const Navbar1 = () =>{
    return ( 
-      <Navbar className="topnav p-0" variant="info">
+      <Navbar className="topnav p-0" variant="info" bg="white" fixed="top">
          <Nav className="container-fluid">
             <Nav.Item>
                <Navbar.Brand>

@@ -6,7 +6,7 @@ import { useParams,useLocation } from 'react-router-dom'
 
 
 const Statementquestion = () => {
-  const url = "/Questions";
+    const url = "/Questions";
     const param = useParams();
     const tid = param.id;
     const [count, setCount] = useState(1);
@@ -33,8 +33,7 @@ const Statementquestion = () => {
             id: count,
             formID: tid,
             QuestionType: "Statement",
-            question: ques.question,
-            answer: ques.answer
+            question: ques.question
         }).then(res => {
             console.log(res.data)
         })

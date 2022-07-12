@@ -47,7 +47,7 @@ const Typeform = () => {
                     const { id, name } = item;
                     return(
                         <Col key={id} >
-                            <Card className="grid1 m-2 " > 
+                            <Card className="grid1 m-2" > 
                                 <Card.Body className='p-0 d-flex align-items-center justify-content-center' onClick={()=>Navigate(`/homepage/${id}`)}>
                                     <p className='px-1 m-4 ' >
                                         {name}

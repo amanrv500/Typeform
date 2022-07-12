@@ -3,53 +3,53 @@ import React, {useEffect, useState} from "react";
 import '../style/navbar.css'
 import {ar } from '../assets';
 import {useParams} from "react-router-dom";
-import { Navbar, Nav } from "react-bootstrap";
+import { Navbar, Nav,Row,Col } from "react-bootstrap";
 
 
 const Nav1 = () =>{
 
     const param = useParams();
     const tid = param.id;
+    const url = '/typeforms';
     const [items,setItems]=useState([]);
 
     useEffect(()=>{
-        customaxios.get(`typeforms/${tid}`).then(
+        customaxios.get(`${url}/${tid}`).then(
             (res) => {
-            const alldata = res.data;
-             setItems(alldata);
+                const alldata = res.data;
+                    setItems(alldata);
             });      
     },[])
 
-   return (
-    <Navbar className="topnav p-0" variant="light">
-        <Nav className="container-fluid d-flex p-0">
-            <Nav.Item>
-                <Navbar.Brand >
-                    <p className="workspace ps-2 fs-6 fs-sm-8">My Workspace / </p><p className="d-inline fs-6 fs-sm-8">{items.name}</p>
-                </Navbar.Brand>
-            </Nav.Item>
-            <Nav.Item className="d-flex my-0">
-                <Nav.Link className="middle">
-                    Create
-                </Nav.Link>
-                <Nav.Link className="middle">
-                    Connect
-                </Nav.Link>
-                <Nav.Link className="middle">
-                    Share
-                </Nav.Link>
-                <Nav.Link className="middle">
-                    Result
-                </Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="ml-auto">
-                <Nav.Link>
+    return (
+            <Navbar className="m-0 p-0 border-bottom bg-white " fixed="top">
+                <Col className="p-2- d-flex align-items-center">
+                    <span className="workspace me-1" style={{color:"grey"}}>
+                        My workspace / 
+                    </span>
+                    <span className="workspace text-dark">
+                        {items.name}
+                    </span>
+                </Col>
+                <Col className="px-2 d-flex justify-content-center my-0 py-0">
+                    <p className="middle my-0 py-0 d-flex me-2 mb-0 align-items-center createtext">
+                        Create
+                    </p>
+                    <p className="middle my-0 py-3 d-flex me-2 mb-0  align-items-center">
+                        Connect
+                    </p>
+                    <p className="middle my-0 py-3 d-flex me-2 mb-0 align-items-center">
+                        Share
+                    </p>   
+                    <p className="middle my-0 py-3 d-flex me-2 mb-0 align-items-center">
+                        Result
+                    </p>     
+                </Col>
+                <Col className="p-2 d-none d-sm-flex d-lg-flex justify-content-end">
                     <img src={ar}  width="30" height="30" className="align-top"  alt="ar"/>
-                </Nav.Link>
-            </Nav.Item>
-        </Nav>
-    </Navbar>
-   );
+                </Col>
+            </Navbar>
+    );
 }
 
 export default Nav1;

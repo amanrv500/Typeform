@@ -13,7 +13,7 @@ const Typeformbar = () =>{
     const [show, setShow] = useState(false);
    
    return ( 
-    <Container fluid className="h-50 mt-25 border-bottom bg-light" >
+    <Container fluid className="h-50 mt-5 border-bottom bg-light"  >
         <br/>
         <br/>
         <br/>

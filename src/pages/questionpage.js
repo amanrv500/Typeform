@@ -18,31 +18,33 @@ const Questionpage = () => {
     const [mcq, setMcq] = useState(true);
     const [statement, setStatement] = useState(false);
     const [show, setShow] = useState(false);
+    const [questionShow, setQuestionShow] = useState(0);
+
 
     return (
-        <div >
-            <Nav1 />
-            <Container fluid className='mx-0 p-0'>
-                <Row className='h-100'>
-                    <Col className='border p-0 m-0' lg='2'>
+        <Container fluid className='vw-100 vw-100 p-0'>
+            <Row>
+                <Nav1 />
+            </Row>
+            <Row className='m-0 mt-5' style={{height:"94vh", width:"100vw"}} >
+                    <Col className='border-end p-0 mx-0' lg='2'>
                         <LeftSideBar changeStateMcq={mcq => setMcq(mcq)} changeStatText={text => setText(text)} changeStateStatment={statement => setStatement(statement)}/> 
                     </Col>
-                    <Col className='border' lg='8'>
-                        <div style={{ display: mcq ? "flex" : "none" }}>
-                            <Questions />
-                        </div>
-                        <div style={{ display: text ? "flex" : "none" } }>
-                            <Textquestion />
-                        </div>
-                        <div style={{ display: statement ? "flex" : "none" }}>
-                            <Statementquestion />  
-                        </div> 
+                    <Col className=' mx-0 p-4 d-flex align-items-center justify-content-center ' lg='8'>
+                        {(() => {
+                            if (text) {
+                                return <Textquestion />
+                            } else if (mcq) {
+                                return <Questions />
+                            } else if (statement) {
+                                return <Statementquestion />
+                            }
+                        })()}
                     </Col>
                     <Col className='border ' lg='2' >
                         <RightSideBar changeStateMcq={mcq => setMcq(mcq)} changeStatText={text => setText(text)} changeStateStatment={statement => setStatement(statement)}/>
                     </Col>
-                </Row>
-            </Container>
+            </Row>
 
             {/* <div className="contents"> 
                 <LeftSideBar changeState={show => setShow(show)}/>
@@ -74,7 +76,7 @@ const Questionpage = () => {
                     <IoIosQuote className='sticon' />Statement
                 </span>
             </div> */}
-        </div>
+        </Container>
     );
 }
 
