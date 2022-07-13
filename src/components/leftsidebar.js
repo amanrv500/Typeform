@@ -37,20 +37,15 @@ const LeftSideBar = (props) =>{
         }
     };
 
-    const TextClick = (e) => {
-        props.changeStatText(true);
-        props.changeStateMcq(false);
-        props.changeStateStatment(false);
+    const TextClick = () => {
+       props.changeState(1);
     };
-    const McqClick = (e) => { 
-        props.changeStatText(false);
-        props.changeStateMcq(true);
-        props.changeStateStatment(false);
+
+    const McqClick = () => { 
+         props.changeState(2);
     };
-    const StatementClick = (e) => {
-        props.changeStatText(false);
-        props.changeStateMcq(false);
-        props.changeStateStatment(true);
+    const StatementClick = () => {
+        props.changeState(3);
     };
 
    
@@ -58,12 +53,14 @@ const LeftSideBar = (props) =>{
         <>
             <Row className="d-flex align-items-center justify-content-between m-0 ps-3 pe-0 py-3">
                 <Col lg='8'>
-                    <span className="h6" style={{fontWeight: "500"}}>Content</span>
+                    <span className="h6" style={{fontWeight: "500"}}>
+                        Content
+                    </span>
                 </Col>
                 <Col lg='4' className="d-flex justify-content-end">
                 <Dropdown drop="end">
                     <DropdownToggle variant="none" className="dt">
-                        <FaPlus className="plus" onClick={() => props.changeState((s) => !s)}/>
+                        <FaPlus className="plus" />
                     </DropdownToggle>
                     <Dropdown.Menu >
                         <Dropdown.Item onClick={TextClick}>
@@ -94,7 +91,7 @@ const LeftSideBar = (props) =>{
                 </Dropdown>
                 </Col>
             </Row>
-                {newdata.map(item=> {
+            {newdata.map(item=> {
                     const { id, QuestionType,question } = item;
                         return(
                             <Row key={id} className='m-2 p-2'>

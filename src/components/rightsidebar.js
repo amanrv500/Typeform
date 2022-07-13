@@ -13,13 +13,12 @@ import data from "../forms/forms";
 
 
 const RightSideBar = (props) =>{
-  let Navigate  = useNavigate();
-  const param = useParams();
-  const tid = param.id;
+    let Navigate  = useNavigate();
+    const param = useParams();
+    const tid = param.id;
+    const { id, name} = data
 
-  const { id, name} = data
-
-  const formatOptionLabel = ({ id, name}) => {
+    const formatOptionLabel = ({ id, name}) => {
         if(id==="1")
             return (
                 <span className="d-flex" onClick={TextClick}>
@@ -49,22 +48,16 @@ const RightSideBar = (props) =>{
             )
     };
 
-    const TextClick = (e) => {
-        props.changeStatText(true);
-        props.changeStateMcq(false);
-        props.changeStateStatment(false);
+    const TextClick = () => {
+        props.changeState(1);
     };
 
-    const McqClick = (e) => { 
-        props.changeStatText(false);
-        props.changeStateMcq(true);
-        props.changeStateStatment(false);
+    const McqClick = () => { 
+        props.changeState(2);
     };
 
-    const StatementClick = (e) => {
-        props.changeStatText(false);
-        props.changeStateMcq(false);
-        props.changeStateStatment(true);
+    const StatementClick = () => {
+        props.changeState(3);
     };
   
     return ( 
@@ -73,19 +66,19 @@ const RightSideBar = (props) =>{
                 <p className="setting mb-0 text-dark" onClick={()=>Navigate(`/homepage/${tid}`)} >
                     Question
                 </p>
-                <p className="setting mb-0"  onClick={()=>Navigate(`/homepage/${tid}`)} >
+                {/* <p className="setting mb-0"  onClick={()=>Navigate(`/homepage/${tid}`)} >
                     Design
                 </p>
                 <p className="setting mb-0"  onClick={()=>Navigate(`/homepage/${tid}/flow`)} >
                     Logic
-                </p>
+                </p> */}
                 <AiTwotoneSetting  className="setting"  />
             </Stack>
             <Row className="p-4">
                 Type
             </Row>
             <Row className="w-100">
-                <Select defaultValue="Choose" formatOptionLabel={formatOptionLabel} options={data} />
+                <Select defaultValue="Choose" formatOptionLabel={formatOptionLabel} options={data} className='w-100' />
             </Row>
             <Row className="border-top mt-5 px-0 font">
                 Image or Video

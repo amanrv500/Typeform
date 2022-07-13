@@ -10,13 +10,11 @@
   color: #000;
   font-weight: 500 !important;
   border-bottom: solid 2px black;
-  line-height: 1;
 }
 .middle:hover{
   color: #000;
   font-weight: 500 !important;
   border-bottom: solid 2px black;
-  line-height: 1;
 }
 @media screen and (max-width: 320px) {
   .middle{

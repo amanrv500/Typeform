@@ -3,15 +3,21 @@ import '../style/questions.css'
 import customaxios from '../api/customaxios';
 import { useParams, } from 'react-router-dom'
 import {v4 as uuidv4} from 'uuid';
-import { Button, Card, CloseButton, Container, FormControl } from 'react-bootstrap';
+import { Button, Card, CloseButton, Container, FormControl, Overlay } from 'react-bootstrap';
 
 
 const Questions = () => {
     const param = useParams();
     const tid = param.id;
     const qid = uuidv4();
+    const [show, setShow] = useState(false);
     const [count , setCount] = useState(1);
     const [choiceCount , setChoiceCount] = useState(3);
+    const target = useRef(null);
+    // const [choices , setChoices] = useState({
+    //     id: choiceCount,
+        
+    // });
 
     const initialValues = {
         question: "",
@@ -29,7 +35,7 @@ const Questions = () => {
     //     ch3.current.style.display = "block";
     // }
 
-    let choices = [
+    const [choices , setChoices] = useState([
         {
             id: 1,
             value: "",
@@ -40,14 +46,16 @@ const Questions = () => {
             value: "",
             label: "Choice 2"
         }
-    ];
+    ]);
+
 
     const choiceAdd = (e) => {
-           choices = [ ...choices, {
+        const newchoices = [ ...choices, {
             id: choiceCount,
             value: "",
             label: `Choice ${choiceCount}`
         }];
+        setChoices(newchoices);
         setChoiceCount(choiceCount + 1);
         console.log('choiceCount', choiceCount,choices);
     }
@@ -85,29 +93,29 @@ const Questions = () => {
    
        
     return (
-        <Card className='p-5 mx-0 h-80 mt-5 w-100'> 
+        <Card className='p-5 mx-0 h-80 mt-4 w-100 shadow'> 
            <div className='h-100 w-50 mt-1 border-end'>
                 <FormControl  onChange={handle} id='quest' name='question'  placeholder="Your questions here"  className='h-20 border-0'/>
                 <FormControl placeholder='Description (optional)' className='mb-2 border-0'/>
                 <div className=' p-0 m-0'>
                     {choices.map(choice => (
-                        <span key={choice.id} className="position-relative ms-3 mb-2 w-30 closebuttonspan">
-                            <FormControl type='text' onChange={handle} name={choice.label} placeholder='choice' className='w-30 bord'/>
-                            <span className="position-absolute top-50 end-0 translate-middle-y me-1  ">
-                                <CloseButton  onClick={choiceRemove} className='closebutton'/>
-                            </span>
-                            
+                        <span key={choice.id} className="position-relative ms-3 mb-2 w-30 closebuttonspan"  onClick={() => setShow(!show)}>
+                            <FormControl type='text' onChange={handle} name={choice.label} placeholder='choice' className='w-30 bord' ref={target}/>
+                            {/* <span className="position-absolute top-50 end-0 translate-middle-y me-1  ">
+                                <CloseButton className='closebuttonspan' onClick={choiceRemove}/>
+                            </span> */}
                         </span>
                     ))}
-                        {/* <FormControl onChange={handle}  type='text' name='choice1' id="choice1" placeholder="choice" className='mb-3 w-30'/>
-                        <FormControl onChange={handle} type='text' name='choice2' id="choice2" placeholder="choice" className='mb-3 w-30'/> */}
-                        {/* <FormControl ref={ch3} onChange={handle} type='text' name='choice2' id="choice2" placeholder="choice" className='mb-3 d-none'/>
-                        <FormControl ref={ch4} onChange={handle} type='text' name='choice2' id="choice2" placeholder="choice" className='mb-3 d-none'/> */}
-                        {/* <p id='addchoice' className='mx-2' onClick={addchoice}>Add Choice</p> 
-                        */}
-                        <Button variant="none" className='ms-1' onClick={choiceAdd}><p className='text-decoration-underline text-primary'>Add Choice</p></Button>
-                        <br/>
-                        <Button onClick={apost} type="submit" className='ms-3'>Submit</Button>
+                    <Button variant="none" className='ms-1' onClick={choiceAdd}><p className='text-decoration-underline text-primary'>Add Choice</p></Button>
+                    <br/>
+                    <Button onClick={apost} type="submit" className='ms-3'>Submit</Button>
+                    <Overlay target={target.current} show={show} placement="right">
+                        {({ placement, arrowProps, show: _show, popper, ...props }) => (
+                            <div {...props} style={{ position: 'absolute', color: 'white', borderRadius: 3, ...props.style,}}>
+                                <CloseButton  onClick={choiceRemove} className=''/>
+                            </div>
+                        )}
+                    </Overlay>
                 </div>
             </div>
         </Card>

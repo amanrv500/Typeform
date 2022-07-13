@@ -14,12 +14,8 @@ import { FaPlus } from 'react-icons/fa';
 import { Col, Container, Row } from 'react-bootstrap';
 
 const Questionpage = () => {
-    const [text, setText] = useState(false);
-    const [mcq, setMcq] = useState(true);
-    const [statement, setStatement] = useState(false);
-    const [show, setShow] = useState(false);
-    const [questionShow, setQuestionShow] = useState(0);
 
+    const [questionShow, setQuestionShow] = useState(2);
 
     return (
         <Container fluid className='vw-100 vw-100 p-0'>
@@ -27,55 +23,26 @@ const Questionpage = () => {
                 <Nav1 />
             </Row>
             <Row className='m-0 mt-5' style={{height:"94vh", width:"100vw"}} >
-                    <Col className='border-end p-0 mx-0' lg='2'>
-                        <LeftSideBar changeStateMcq={mcq => setMcq(mcq)} changeStatText={text => setText(text)} changeStateStatment={statement => setStatement(statement)}/> 
-                    </Col>
-                    <Col className=' mx-0 p-4 d-flex align-items-center justify-content-center ' lg='8'>
-                        {(() => {
-                            if (text) {
-                                return <Textquestion />
-                            } else if (mcq) {
-                                return <Questions />
-                            } else if (statement) {
-                                return <Statementquestion />
-                            }
-                        })()}
-                    </Col>
-                    <Col className='border ' lg='2' >
-                        <RightSideBar changeStateMcq={mcq => setMcq(mcq)} changeStatText={text => setText(text)} changeStateStatment={statement => setStatement(statement)}/>
-                    </Col>
+                <Col className='border-end p-0 mx-0' lg='2'>
+                    <LeftSideBar  changeState={state => setQuestionShow(state)}/> 
+                </Col>
+                <Col className=' mx-0 p-4 d-flex align-items-center justify-content-center bg-light' lg='8'>
+                    {(() => {
+                        if (questionShow === 1) {
+                            return <Textquestion />
+                        } 
+                        else if (questionShow === 2) {
+                            return <Questions />
+                        } 
+                        else if (questionShow === 3) {
+                            return <Statementquestion />
+                        }
+                    })()}
+                </Col>
+                <Col className='border ' lg='2' >
+                    <RightSideBar changeState={state => setQuestionShow(state)}/>
+                </Col>
             </Row>
-
-            {/* <div className="contents"> 
-                <LeftSideBar changeState={show => setShow(show)}/>
-
-                    <div style={{ display: mcq ? "flex" : "none" }}>
-                        <Questions />
-                    </div>
-                    <div style={{ display: text ? "flex" : "none" } }>
-                        <Textquestion />
-                    </div>
-                    <div style={{ display: statement ? "flex" : "none" }}>
-                        <Statementquestion />  
-                    </div> 
-                    
-                        <RightSideBar />    
-                    </div>
-            <div className='questype' style={{ visibility: show ? "visible" : "hidden" }}>
-                <h3>
-                    Question Type
-                </h3>
-                <div className='qicons' onClick={(e) => TextClick(e)}>
-                    <CgTranscript className='ticon' />
-                    Text
-                 </div>
-                <span className='qicons' onClick={(e) => McqClick(e)}>
-                    <AiOutlineCheck className='micon'/> Multiple Choice
-                </span>
-                <span className='qicons' onClick={(e) => StatementClick(e)}>
-                    <IoIosQuote className='sticon' />Statement
-                </span>
-            </div> */}
         </Container>
     );
 }
