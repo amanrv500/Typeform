@@ -72,10 +72,7 @@ const Typeformbar = () =>{
             </Col>
         </Row>
         <br/>
-        <Popup
-        show={show}
-        onHide={() => setShow(false)}
-        />
+        <Popup show={show} onHide={() => setShow(false)} />
     </Container>
    );
 }

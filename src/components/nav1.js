@@ -2,13 +2,14 @@ import customaxios from "../api/customaxios";
 import React, {useEffect, useState} from "react";
 import '../style/navbar.css'
 import {ar } from '../assets';
-import {useParams} from "react-router-dom";
+import {useParams,useNavigate} from "react-router-dom";
 import { Navbar, Nav,Row,Col } from "react-bootstrap";
 
 
 const Nav1 = () =>{
 
     const param = useParams();
+    let Navigate  = useNavigate();
     const tid = param.id;
     const url = '/typeforms';
     const [items,setItems]=useState([]);
@@ -24,7 +25,7 @@ const Nav1 = () =>{
     return (
         <Navbar className="m-0 p-0 border-bottom bg-white " fixed="top">
             <Col className="p-2- d-flex align-items-center">
-                <span className="workspace me-1" style={{color:"grey"}}>
+                <span className="workspace me-1 ms-3" style={{color:"grey"}}>
                     My workspace / 
                 </span>
                 <span className="workspace text-dark">
@@ -32,10 +33,10 @@ const Nav1 = () =>{
                 </span>
             </Col>
             <Col className="px-2 d-flex justify-content-center my-0 py-0">
-                <p className="middle my-0 py-0 d-flex me-2 mb-0 align-items-center createtext">
+                <p className="middle my-0 py-3 d-flex me-2 mb-0 align-items-center createtext">
                     Create
                 </p>
-                <p className="middle my-0 py-3 d-flex me-2 mb-0  align-items-center">
+                <p className="middle my-0 py-3 d-flex me-2 mb-0  align-items-center" onClick={()=>Navigate(`/homepage/${tid}/flow`)}>
                     Logic
                 </p>
                 {/* <p className="middle my-0 py-3 d-flex me-2 mb-0 align-items-center">

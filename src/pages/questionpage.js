@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import Nav1 from "../components/nav";
+import Nav1 from "../components/nav1";
 import RightSideBar from '../components/rightsidebar';
 import LeftSideBar from '../components/leftsidebar';
 import Questions from '../components/mcqquestions';

@@ -5,10 +5,10 @@
     cursor: pointer;
 }
 .closebutton{
-    display: none;
+    visibility: visible;
 }
-.closebuttonspan:hover + .closebutton{
-    display: inline;
+.closebutton:hover{
+    visibility: visible;
 }
 .btnstat{
     border-radius: 4px !important;
@@ -19,7 +19,17 @@
 .textans{
     color: #379CFB !important;
 }
-
+.formControl::placeholder{
+    color: #000000 !important;
+    font-weight: 400 !important;
+    font-style: italic !important;
+}
+.bg-blue{
+    background-color: #0445AF !important;
+}
+.bg-light-blue{
+    background-color: rgba(4, 69, 175 ,0.3) !important;
+}
 
 
 

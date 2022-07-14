@@ -51,7 +51,7 @@ const LeftSideBar = (props) =>{
    
     return ( 
         <>
-            <Row className="d-flex align-items-center justify-content-between m-0 ps-3 pe-0 py-3">
+            <Row className="d-flex align-items-center justify-content-between m-0 ps-1 pe-0 py-3">
                 <Col lg='8'>
                     <span className="h6" style={{fontWeight: "500"}}>
                         Content
@@ -92,16 +92,16 @@ const LeftSideBar = (props) =>{
                 </Col>
             </Row>
             {newdata.map(item=> {
-                    const { id, QuestionType,question } = item;
+                    const { id, QuestionType,question,count } = item;
                         return(
-                            <Row key={id} className='m-2 p-2'>
+                            <Row key={id} className='m-2 ms-1 ps-0 py-2'>
                                 {(() =>{
                                     if(QuestionType==="Text")
                                         return (
                                             <span className="d-flex">
-                                                <span className="rounded px-1 w-30 d-flex align-items-center me-2 justify-content-between" style = {{backgroundColor:"#379CFB"}}>
+                                                <span className="rounded px-1 w-25 d-flex align-items-center me-2 justify-content-between" style = {{backgroundColor:"#379CFB"}}>
                                                     <CgTranscript/>
-                                                    {id}
+                                                    {count}
                                                 </span>
                                                 <span className="fs-sm" style={{fontSize:"12px"}}> 
                                                     {question}
@@ -111,29 +111,31 @@ const LeftSideBar = (props) =>{
                                     else if(QuestionType==="MultipleChoice")
                                         return (
                                             <span className="d-flex">
-                                                <span className="rounded px-1 w-30 d-flex align-items-center me-2 justify-content-between" style = {{backgroundColor:"#D65C99"}}>
+                                                <span className="rounded px-1 w-25 d-flex align-items-center me-2 justify-content-between" style = {{backgroundColor:"#D65C99"}}>
                                                     <GoCheck/>
-                                                    {id}
+                                                    {count}
                                                 </span>
-                                                {question}
+                                                <span className="fs-sm" style={{fontSize:"12px"}}> 
+                                                    {question}
+                                                </span>
                                             </span>
                                         )
                                     else if(QuestionType==="Statement")
                                         return (
                                             <span className="d-flex">
-                                                <span className="rounded px-1 w-30 d-flex align-items-center me-2 justify-content-between" style = {{backgroundColor:"#FBA137"}}>
+                                                <span className="rounded px-1 w-25 d-flex align-items-center me-2 justify-content-between" style = {{backgroundColor:"#FBA137"}}>
                                                     <IoIosQuote/>
-                                                    {id}
+                                                    {count}
                                                 </span>
-                                                {question}
+                                                <span className="fs-sm" style={{fontSize:"12px"}}> 
+                                                    {question}
+                                                </span>
                                             </span>
                                         )
                                 })()}
                             </Row>
                         )
-                }
-                )
-                }
+            })}
          </>  
     );
 }

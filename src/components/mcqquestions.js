@@ -89,34 +89,39 @@ const Questions = () => {
             console.log(res.data)
         })
         setCount(count + 1);
-    }  
+    } 
    
        
     return (
         <Card className='p-5 mx-0 h-80 mt-4 w-100 shadow'> 
            <div className='h-100 w-50 mt-1 border-end'>
-                <FormControl  onChange={handle} id='quest' name='question'  placeholder="Your questions here"  className='h-20 border-0'/>
-                <FormControl placeholder='Description (optional)' className='mb-2 border-0'/>
-                <div className=' p-0 m-0'>
+                <FormControl  onChange={handle} id='quest' name='question' size="lg"  placeholder="Your questions here" autoComplete='off' className='h-20 p-0 border-0 formControl'/>
+                <FormControl placeholder='Description (optional)'size='sm' className='mb-2 p-0 border-0'/>
+                <div className=''>
                     {choices.map(choice => (
-                        <span key={choice.id} className="position-relative ms-3 mb-2 w-30 closebuttonspan"  onClick={() => setShow(!show)}>
-                            <FormControl type='text' onChange={handle} name={choice.label} placeholder='choice' className='w-30 bord' ref={target}/>
+                        <span key={choice.id} className=" ms-3 mb-2"  onClick={() => setShow(!show)}>
+                            {/* <FormControl type='text' onChange={handle} name={choice.label} placeholder='choice' className='w-30 bord' ref={target}/> */}
                             {/* <span className="position-absolute top-50 end-0 translate-middle-y me-1  ">
                                 <CloseButton className='closebuttonspan' onClick={choiceRemove}/>
                             </span> */}
+                            
+                            <div className=' p-0 w-40  position-relative'>
+                                <FormControl type='text' onChange={handle} name={choice.label} placeholder='choice' className='ms-2 bord' ref={target}/>
+                                    <CloseButton  onClick={choiceRemove} className='position-absolute top-50 start-100 translate-middle closebutton bg-dark'/>
+                                {/* <Overlay target={target.current} show={show} placement="right">
+                                {({ placement, arrowProps, show: _show, popper, ...props }) => (
+                                    <div {...props} style={{ position: 'absolute', color: 'white', borderRadius: 3, ...props.style,}}>
+                                        <CloseButton  onClick={choiceRemove} className=''/>
+                                    </div>
+                                )}
+                            </Overlay> */}
+                            </div>
                         </span>
                     ))}
-                    <Button variant="none" className='ms-1' onClick={choiceAdd}><p className='text-decoration-underline text-primary'>Add Choice</p></Button>
-                    <br/>
-                    <Button onClick={apost} type="submit" className='ms-3'>Submit</Button>
-                    <Overlay target={target.current} show={show} placement="right">
-                        {({ placement, arrowProps, show: _show, popper, ...props }) => (
-                            <div {...props} style={{ position: 'absolute', color: 'white', borderRadius: 3, ...props.style,}}>
-                                <CloseButton  onClick={choiceRemove} className=''/>
-                            </div>
-                        )}
-                    </Overlay>
                 </div>
+                <Button variant="none" className='' onClick={choiceAdd}><p className='text-decoration-underline text-primary'>Add Choice</p></Button>
+                <br/>
+                <Button onClick={apost} type="submit"  className='bg-blue'>Submit</Button>
             </div>
         </Card>
     )
