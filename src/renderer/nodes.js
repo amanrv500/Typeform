@@ -16,6 +16,7 @@ import { useParams } from 'react-router-dom';
     const param = useParams();
     const tid = param.id;
     let newnodes = [] 
+    let node =[]
    
 
     useEffect(() => {
@@ -37,7 +38,7 @@ import { useParams } from 'react-router-dom';
     for(let i=0;i<newnodes.length;i++){
         let x = 100
         let y = 100 + i*100
-        const node = [
+        node.push([
             { 
                 id: newnodes[i].id,
                 type: 'defaultnode',
@@ -50,8 +51,9 @@ import { useParams } from 'react-router-dom';
                 },
                 position: { x: x, y: y },
             },
-        ]
+        ])
     }
+    return node;
 }
 
 const Edges = () => {
@@ -62,6 +64,7 @@ const Edges = () => {
     const param = useParams();
     const tid = param.id;
     let newnodes = [] 
+    let edge = []
   
 
     useEffect(() => {
@@ -82,17 +85,15 @@ const Edges = () => {
     };
     
     for(let i=0;i<newnodes.length;i++){
-        const edge = [
+        edge.push([
             {
                 id: eid,
                 source: newnodes[i].id,
-                target: newnodes[
-                    i + 1 
-                ].id,
+                target: newnodes[ i + 1 ].id,
             },
-        ] 
+        ])
     }
-    
+    return edge;
 }
 
 export { Nodes, Edges }

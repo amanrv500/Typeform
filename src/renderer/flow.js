@@ -42,85 +42,87 @@ import { Nodes as initialNodes, Edges as initialEdges } from './nodes';
 
 const  Flow = () => {
 
-  // const url = `/Questions`;
-  // const [items, setItems] = useState([]) 
-  // const param = useParams();
-  // const tid = param.id;
-  // let newnodes = [] 
+    // const url = `/Questions`;
+    // const [items, setItems] = useState([]) 
+    // const param = useParams();
+    // const tid = param.id;
+    // let newnodes = [] 
 
-  // useEffect(() => {
-  //   return () => {
-  //     customaxios.get(url).then(
-  //       (res) => {
-  //         const alldata = res.data;
-  //         setItems(alldata);
-  //       }
-  //     );
-  //   };
-  // }, []);
+    // useEffect(() => {
+    //   return () => {
+    //     customaxios.get(url).then(
+    //       (res) => {
+    //         const alldata = res.data;
+    //         setItems(alldata);
+    //       }
+    //     );
+    //   };
+    // }, []);
 
-  // for(let i=0;i<items.length;i++){
-  //   let x = 100
-  //   let y = 100 + i*100
+    // for(let i=0;i<items.length;i++){
+    //   let x = 100
+    //   let y = 100 + i*100
 
-  //   if(items[i].formID===tid){
-  //       // newnodes.push(items[i])
-  //       setNodes([
-  //         { id: items[i].id,
-  //           type: 'defaultnode',
-  //           position: { x: x, y: y },
-  //           data: { value: items[i].count },
-  //   }])
-  //   }
-  // };
+    //   if(items[i].formID===tid){
+    //       // newnodes.push(items[i])
+    //       setNodes([
+    //         { id: items[i].id,
+    //           type: 'defaultnode',
+    //           position: { x: x, y: y },
+    //           data: { value: items[i].count },
+    //   }])
+    //   }
+    // };
   
   const [nodes, setNodes] = useState(initialNodes);
 
-  // setNodes([
-  //   ...nodes,
-  //   {
-  //     id: new,
-  //     type: 'UpdaterNode',
-  //     targetPosition: 'top',
-  //     position: { x: 200, y: 200 },
-  //     data: { label: 'node 3' },
-  //   },
-  // ]);
+    // setNodes([
+    //   ...nodes,
+    //   {
+    //     id: new,
+    //     type: 'UpdaterNode',
+    //     targetPosition: 'top',
+    //     position: { x: 200, y: 200 },
+    //     data: { label: 'node 3' },
+    //   },
+    // ]);
 
 
-  const [edges, setEdges] = useState(initialEdges);
-  let Navigate = useNavigate();
+    const [edges, setEdges] = useState(initialEdges);
+     
 
-  const onNodesChange = useCallback(
-    (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-    [setNodes]
-  );
-//   const onEdgesChange = useCallback(
-//     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-//     [newEdges]
-//   );
+    // const onNodesChange = useCallback(
+    //     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
+    //     [setNodes]
+    // );
+    //   const onEdgesChange = useCallback(
+    //     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+    //     [newEdges]
+    //   );
 
    
-  const onConnect = useCallback(
-    (connection) => setEdges((eds) => addEdge(connection, eds)),
-    [setEdges]
-  );
+    // const onConnect = useCallback(
+    //     (connection) => setEdges((eds) => addEdge(connection, eds)),
+    //     [setEdges]
+    // );
 
-//   const connectask = () => {
-//     let initailEdges = [ { id: 'e1-2', source: 'a', sourceHandle: 'a', target: 'b' }, ]
-//     Navigate("/rules")
-//   }
+    //   const connectask = () => {
+    //     let initailEdges = [ { id: 'e1-2', source: 'a', sourceHandle: 'a', target: 'b' }, ]
+    //     Navigate("/rules")
+    //   }
 
-  const nodeTypes = { QuestionNode: QuestionNode};
-  const defaultEdgeOptions = { animated: false };
+    // const nodeTypes = { QuestionNode: QuestionNode};
+    // const defaultEdgeOptions = { animated: false };
 
 
-  return (
-    <ReactFlow nodes={nodes} edges={edges} onNodesChange={onNodesChange} onConnect={onConnect} defaultEdgeOptions={defaultEdgeOptions} nodeTypes={nodeTypes} fitView >
-        <Controls />
-        <Background color="#E0E0E0" />
-    </ReactFlow>
-  );
+    
+
+    return (
+        <ReactFlow nodes={nodes} edges={edges}  fitView >
+            <Controls />
+            <Background color="#E0E0E0" />
+        </ReactFlow>
+    );
 }
 
 export default Flow;
