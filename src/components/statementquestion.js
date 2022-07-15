@@ -1,12 +1,12 @@
-import React,{ useState, useEffect} from 'react'
+import React,{ useState} from 'react'
 import '../style/questions.css'
 import customaxios from '../api/customaxios';
 import { v4 as uuidv4 } from 'uuid';
-import { useParams,useLocation } from 'react-router-dom'
+import { useParams} from 'react-router-dom'
 import { Button, Card, FormControl } from 'react-bootstrap';
 
 
-const Statementquestion = () => {
+const Statementquestion = (props) => {
     const url = "/Questions";
     const param = useParams();
     const tid = param.id;
@@ -16,7 +16,7 @@ const Statementquestion = () => {
     const initialValues = {
         question: "",
     };
-    const Qid = uuidv4();
+
   
     const [ques, setQues] = useState(initialValues)
     
@@ -41,6 +41,7 @@ const Statementquestion = () => {
             console.log(res.data)
         })
         setCount(count + 1);
+        props.refresh(Math.random());
     }
 
   return (

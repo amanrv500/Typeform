@@ -39,7 +39,8 @@ const Typeform = () => {
             const alldata = res.data;
              setItems(alldata);
             });
-    },[typeid])  
+    },[])  
+
     return ( 
         <Container fluid className=" vw-100 d-flex">
             <Row>

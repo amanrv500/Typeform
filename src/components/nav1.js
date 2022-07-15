@@ -3,7 +3,7 @@ import React, {useEffect, useState} from "react";
 import '../style/navbar.css'
 import {ar } from '../assets';
 import {useParams,useNavigate} from "react-router-dom";
-import { Navbar, Nav,Row,Col } from "react-bootstrap";
+import { Navbar,Col } from "react-bootstrap";
 
 
 const Nav1 = () =>{
@@ -25,8 +25,10 @@ const Nav1 = () =>{
     return (
         <Navbar className="m-0 p-0 border-bottom bg-white " fixed="top">
             <Col className="p-2- d-flex align-items-center">
-                <span className="workspace me-1 ms-3" style={{color:"grey"}}>
-                    My workspace / 
+                <span className="workspace me-1 ms-3" style={{color:"grey"}} onClick={()=>Navigate(`/homepage/`)}>
+                    <a onClick={()=>Navigate(`/homepage/`)}>
+                        My workspace / 
+                    </a>
                 </span>
                 <span className="workspace text-dark">
                     {items.name}

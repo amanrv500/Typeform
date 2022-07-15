@@ -2,9 +2,7 @@ import React,{useState,useEffect} from "react";
 import { FaPlus } from "react-icons/fa";
 import '../style/leftsidebar.css'
 import { useParams } from "react-router-dom";
-import {FaQuoteRight} from "react-icons/fa"
 import { CgTranscript} from 'react-icons/cg'
-import { AiOutlineCheck} from 'react-icons/ai'
 import {IoIosQuote} from "react-icons/io"
 import {GoCheck} from "react-icons/go"
 import { Col, Row, Dropdown } from "react-bootstrap";
@@ -21,18 +19,20 @@ const LeftSideBar = (props) =>{
     const [items, setItems] = useState([])
     let newdata = []
 
-    const url = `/Questions`;
-
     useEffect(()=>{
+        const url = `/Questions`;
         customaxios.get(url).then(
             (res) => {
             const alldata = res.data;
-             setItems(alldata);
+                setItems(alldata);
             });
-    },[])
+    },props.refresh)
+
+    console.log(props.refresh)
+
 
     for(let i=0;i<items.length;i++){
-        if(items[i].formID==tid){
+        if(items[i].formID===tid){
             newdata.push(items[i])
         }
     };

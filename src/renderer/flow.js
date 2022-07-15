@@ -1,38 +1,36 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useCallback, useState } from 'react';
-import ReactFlow, { applyEdgeChanges, applyNodeChanges,addEdge,Controls,Handle,Position } from 'react-flow-renderer';
+import ReactFlow, { applyEdgeChanges, applyNodeChanges,addEdge,Controls,Handle,Position , Background} from 'react-flow-renderer';
 import { BsArrowBarLeft } from 'react-icons/bs';
 import { FaThList } from 'react-icons/fa'
-import UpdaterNode from './updater1.js';
+import QuestionNode from './questionnode.js';
 import UpdaterNode2 from './updater2.js';
+import customaxios from '../api/customaxios.js';
 import {useNavigate} from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+import { Nodes as initialNodes, Edges as initialEdges } from './nodes';
 
-let newEdges = [
-  { id: 'edge-1', source: 'node-1', target: 'node-2', sourceHandle: 'a' },
-  { id: 'edge-2', source: 'node-1', target: 'node-3', sourceHandle: 'b' }
-]
+// let newEdges = [
+//   { id: 'edge-1', source: 'node-1', target: 'node-2', sourceHandle: 'a' },
+//   { id: 'edge-2', source: 'node-1', target: 'node-3', sourceHandle: 'b' }
+// ]
 
-let initialEdges = [
-  { id: 'e1-2', source: 'a', sourceHandle: 'a', target: 'b' },
-  { id: 'e2-3', source: 'b', sourceHandle: 'b', target: '3' },
-];
+// let initialEdges = [
+//   { id: 'e1-2', source: 'a', sourceHandle: 'a', target: 'b' },
+//   { id: 'e2-3', source: 'b', sourceHandle: 'b', target: '3' },
+// ];
+
+// let initialNodes = [
+//   { id: 'node-1', 
+//     type: 'QuestionNode', 
+//     position: { x: 0, y: 0 }, 
+//     data: { value: 123 },
+//     sourcePosition: 'right' 
+//   },
+// ]
 
 
-let initialNodes = [
-  { id: 'node-1', 
-    type: 'UpdaterNode', 
-    position: { x: 0, y: 0 }, 
-    data: { value: 123 },
-    sourcePosition: 'right' },
-    
-  {
-    id: 'node-2',
-    type: 'UpdaterNode2',
-    targetPosition: 'top',
-    position: { x: 200, y: 200 },
-    data: { label: 'node 3' },
-  },
-]
+
 
 // let elements = [
 //   {id: "1", data: {label: "1"}, position: {x: 0, y: 0}},
@@ -42,8 +40,54 @@ let initialNodes = [
 //   {id: "e2-e3", source: "2", target: "3"}
 // ]
 
-function Flow() {
+const  Flow = () => {
+
+  // const url = `/Questions`;
+  // const [items, setItems] = useState([]) 
+  // const param = useParams();
+  // const tid = param.id;
+  // let newnodes = [] 
+
+  // useEffect(() => {
+  //   return () => {
+  //     customaxios.get(url).then(
+  //       (res) => {
+  //         const alldata = res.data;
+  //         setItems(alldata);
+  //       }
+  //     );
+  //   };
+  // }, []);
+
+  // for(let i=0;i<items.length;i++){
+  //   let x = 100
+  //   let y = 100 + i*100
+
+  //   if(items[i].formID===tid){
+  //       // newnodes.push(items[i])
+  //       setNodes([
+  //         { id: items[i].id,
+  //           type: 'defaultnode',
+  //           position: { x: x, y: y },
+  //           data: { value: items[i].count },
+  //   }])
+  //   }
+  // };
+  
   const [nodes, setNodes] = useState(initialNodes);
+
+  // setNodes([
+  //   ...nodes,
+  //   {
+  //     id: new,
+  //     type: 'UpdaterNode',
+  //     targetPosition: 'top',
+  //     position: { x: 200, y: 200 },
+  //     data: { label: 'node 3' },
+  //   },
+  // ]);
+
+
   const [edges, setEdges] = useState(initialEdges);
   let Navigate = useNavigate();
 
@@ -51,41 +95,32 @@ function Flow() {
     (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
     [setNodes]
   );
-  const onEdgesChange = useCallback(
-    (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    [newEdges]
-  );
+//   const onEdgesChange = useCallback(
+//     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+//     [newEdges]
+//   );
+
+   
   const onConnect = useCallback(
     (connection) => setEdges((eds) => addEdge(connection, eds)),
     [setEdges]
   );
 
-  const connectask = () => {
-    let initailEdges = [ { id: 'e1-2', source: 'a', sourceHandle: 'a', target: 'b' }, ]
-    Navigate("/rules")
-  }
+//   const connectask = () => {
+//     let initailEdges = [ { id: 'e1-2', source: 'a', sourceHandle: 'a', target: 'b' }, ]
+//     Navigate("/rules")
+//   }
 
-  const nodeTypes = { UpdaterNode: UpdaterNode ,
-                      UpdaterNode2: UpdaterNode2};
+  const nodeTypes = { QuestionNode: QuestionNode};
   const defaultEdgeOptions = { animated: false };
 
 
   return (
-    <ReactFlow 
-      nodes={nodes}
-      edges={edges}
-      onNodesChange={onNodesChange}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect,connectask}
-      defaultEdgeOptions={defaultEdgeOptions}
-      nodeTypes={nodeTypes}
-      fitView
-    >
-    <Controls />
+    <ReactFlow nodes={nodes} edges={edges} onNodesChange={onNodesChange} onConnect={onConnect} defaultEdgeOptions={defaultEdgeOptions} nodeTypes={nodeTypes} fitView >
+        <Controls />
+        <Background color="#E0E0E0" />
     </ReactFlow>
-   
   );
 }
-
 
 export default Flow;

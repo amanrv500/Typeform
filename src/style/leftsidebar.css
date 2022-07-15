@@ -3,11 +3,6 @@
      outline: none !important;
      box-shadow: none !important;
 }
-/* .dropdown-toggle:focus {
-     outline: none !important;
-     box-shadow: none !important;
-} */
-
 
 .plus{
     border-radius: 4px;
@@ -17,18 +12,4 @@
     height: 35px;
     box-sizing: border-box;
 }
-.qtype{
-    margin: 20px;
-    height: 5%;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    box-sizing: border-box;
-}
 
-.qico{
-    display: flex;
-    justify-content: space-between;
-    align-items: center; 
-    margin:5px;
-}

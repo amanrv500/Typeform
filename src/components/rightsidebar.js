@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import { Container, Row, Col, Stack, FormControl } from "react-bootstrap";
+import { Row, Stack,} from "react-bootstrap";
 import {AiTwotoneSetting} from "react-icons/ai"
 import {CgTranscript} from "react-icons/cg"
 import { GoCheck } from "react-icons/go";
@@ -7,7 +7,6 @@ import {IoIosQuote} from "react-icons/io"
 import Select from 'react-select';
 import { useNavigate, useParams } from "react-router-dom";
 import '../style/rightsidebar.css'
-import { Dropdown,} from 'react-bootstrap'
 import data from "../forms/forms";
 
 
@@ -16,7 +15,7 @@ const RightSideBar = (props) =>{
     let Navigate  = useNavigate();
     const param = useParams();
     const tid = param.id;
-    const { id, name} = data
+    // const { id, name} = data
 
     const formatOptionLabel = ({ id, name}) => {
         if(id==="1")
@@ -77,7 +76,7 @@ const RightSideBar = (props) =>{
             <Row className="p-4">
                 Type
             </Row>
-            <Row className="w-100">
+            <Row className="w-100 m-0">
                 <Select defaultValue="Choose" formatOptionLabel={formatOptionLabel} options={data} className='w-100' />
             </Row>
             <Row className="border-top mt-5 px-0 font">

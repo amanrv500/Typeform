@@ -1,16 +1,13 @@
-import Navbar from "../components/Navbar";
 import RightSideBar from "../components/rightsidebar";
 import Flow from "../renderer/flow";
 import React from 'react';
-import '../style/flowpage.css';
 import { Container, Row, Col } from "react-bootstrap";
-import Navbar1 from "../components/Navbar";
 import Nav2 from "../components/nav2";
 
 
 const Flowpage = () => {
     return (
-        <Container fluid >
+        <Container fluid className="p-0 vw-100 vh-100" >
             <Row >
                 <Nav2 />
             </Row>
@@ -23,15 +20,6 @@ const Flowpage = () => {
                 </Col>
             </Row>
         </Container>
-        // <div className="flowpage">
-        //     <Navbar />
-        //     <div className="contents">
-        //         <div className="flow">
-        //             <Flow />
-        //         </div>
-        //         <RightSideBar />
-        //     </div>
-        // </div>
     );
 }
 
