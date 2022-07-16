@@ -5,10 +5,10 @@ import { CgTranscript } from 'react-icons/cg';
 import { GoCheck } from 'react-icons/go';
 import { IoIosQuote } from 'react-icons/io';
 
-const QuestionNode = (props) => {
+const QuestionNode = ({data}) => {
     
     return (
-      <div className='border p-2 rounded shadow-sm' style={{heigth:"40px",width:"120px"}}>
+      <div className='border p-2 rounded shadow-sm' style={{heigth:"40px",width:"80px"}}>
             {(() => {
                 if (true) {
                     return (
@@ -19,7 +19,8 @@ const QuestionNode = (props) => {
                                     <CgTranscript/>
                                 </span>
                                 <span>
-                                    question
+                                    {data.label}
+                                    {data.qtype}
                                 </span>
                         </span>
                         <Handle type="source" position={Position.Left} />
@@ -52,10 +53,6 @@ const QuestionNode = (props) => {
                 // }
             })()}
       </div>
-      // <div className="updater-node">
-      //   <label htmlFor="text"><FaThList className='icon3' /> 1 </label>
-      //   <Handle type="source" position={Position.Right} />
-      // </div>
     );
   }
 

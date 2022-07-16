@@ -36,67 +36,26 @@ import { useParams } from 'react-router-dom';
     };
 
     for(let i=0;i<newnodes.length;i++){
-        let x = 100
-        let y = 100 + i*100
+        let x = 10
+        let y = 10 + i*10
         node.push([
             { 
                 id: newnodes[i].id,
-                type: 'defaultnode',
-                position: { x: x, y: y },
-                data: {label: (
-                    <>
-                      <FaThList /> <strong>{newnodes[i].question}</strong>
-                    </>
-                  ),
+                type: 'QuestionNode',
+                position: { x: 100, y: 200  },
+                data: {label: newnodes[i].question, qtype: newnodes[i].QuestionType
                 },
-                position: { x: x, y: y },
             },
         ])
     }
+
+
     return node;
 }
 
-const Edges = () => {
-    
-    const eid = uuidv4();
-    const url = `/Questions`;
-    const [items, setItems] = useState([]) 
-    const param = useParams();
-    const tid = param.id;
-    let newnodes = [] 
-    let edge = []
-  
 
-    useEffect(() => {
-        return () => {
-        customaxios.get(url).then(
-            (res) => {
-            const alldata = res.data;
-            setItems(alldata);
-            }
-        )};
-    }, []);
-    
 
-    for(let i=0;i<items.length;i++){
-        if(items[i].formID===tid){
-            newnodes.push(items[i])    
-        }
-    };
-    
-    for(let i=0;i<newnodes.length;i++){
-        edge.push([
-            {
-                id: eid,
-                source: newnodes[i].id,
-                target: newnodes[ i + 1 ].id,
-            },
-        ])
-    }
-    return edge;
-}
-
-export { Nodes, Edges }
+export default Nodes;
     
 
     // return(
