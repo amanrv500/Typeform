@@ -16,8 +16,7 @@ import { useParams } from 'react-router-dom';
     const param = useParams();
     const tid = param.id;
     let newnodes = [] 
-    let node =[]
-   
+    const [node, setNode] = useState([]);
 
     useEffect(() => {
         customaxios.get(url).then(
@@ -35,22 +34,31 @@ import { useParams } from 'react-router-dom';
         }
     };
 
-    for(let i=0;i<newnodes.length;i++){
-        let x = 10
-        let y = 10 + i*10
-        node.push([
-            { 
-                id: newnodes[i].id,
-                type: 'QuestionNode',
-                position: { x: 100, y: 200  },
-                data: {label: newnodes[i].question, qtype: newnodes[i].QuestionType
-                },
-            },
-        ])
-    }
-
+    let initialNodes = newnodes.map((item) => {
+        setNode(node => [...node, {
+            id: item.id,
+            type: 'QuestionNode',
+            position: { x: 100, y: 200  },
+            data: {label: item.question, qtype: item.QuestionType},
+    }]
+        )}
+    )
 
     return node;
+
+    // for(let i=0;i<newnodes.length;i++){
+    //     let x = 10
+    //     let y = 10 + i*10
+    //     node.push([
+    //         { 
+    //             id: newnodes[i].id,
+    //             type: 'QuestionNode',
+    //             position: { x: 100, y: 200  },
+    //             data: {label: newnodes[i].question, qtype: newnodes[i].QuestionType
+    //             },
+    //         },
+    //     ])
+    // }
 }
 
 

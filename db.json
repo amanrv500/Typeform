@@ -195,7 +195,7 @@
       "question": "hey there"
     },
     {
-      "id": "f94c4450-4e11-4a2b-8a21-dd8717d34659",
+      "id": "1",
       "count": 1,
       "formID": "amikMqm",
       "QuestionType": "MultipleChoice",
@@ -206,7 +206,7 @@
       }
     },
     {
-      "id": "bf7afc69-4380-4154-abc5-efd0e4f6bacf",
+      "id": "2",
       "count": 1,
       "formID": "amikMqm",
       "QuestionType": "Text",
@@ -214,7 +214,7 @@
       "answer": "frggr"
     },
     {
-      "id": "ad9d6191-d48a-45d7-8ec9-2929dcdcc06b",
+      "id": "3",
       "count": 1,
       "formID": "amikMqm",
       "QuestionType": "Statement",

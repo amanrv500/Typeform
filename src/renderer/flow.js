@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useMemo} from 'react';
 import { useCallback, useState } from 'react';
 import ReactFlow, { applyEdgeChanges, 
     applyNodeChanges,
@@ -48,7 +48,16 @@ import {v4 as uuidv4} from 'uuid';
 //   {id: "e2-e3", source: "2", target: "3"}
 // ]
 
+const nodeTypes = { QuestionNode: QuestionNode,};
+
 const  Flow = () => {
+
+    const nodeTypes = useMemo(
+        () => ({
+          QuestionNode: QuestionNode,
+        }),
+        []
+    );
 
     const eid = uuidv4();
     const url = `/Questions`;
@@ -56,7 +65,8 @@ const  Flow = () => {
     const param = useParams();
     const tid = param.id;
     let newnodes = [] 
-    const [node, setNode] = useState([]);
+    let nod = [];
+    const [node1, setNode1] = useState([]);
     useEffect(() => {
         customaxios.get(url).then(
             (res) => {
@@ -71,16 +81,68 @@ const  Flow = () => {
         }
     };
 
-    const initialNodes = newnodes.map((item) => {
-        return {
-            id: item.id,
-            type: 'QuestionNode',
-            position: { x: 100, y: 200  },
-            data: {label: item.question, qtype: item.QuestionType
-            },
-        }})
-    
-    console.log(initialNodes)
+    // const initialNodes = newnodes.map((item) => {
+    //     return {
+    //         id: item.id,
+    //         type: 'QuestionNode',
+    //         position: { x: 100, y: 200  },
+    //         data: {label: item.question, qtype: item.QuestionType
+    //         },
+    //     }})
+
+    // newnodes.forEach((item) => {
+    //     setNod(node => [...node, {
+    //         id: item.id,
+    //         type: 'QuestionNode',
+    //         position: { x: 100, y: 200  },
+    //         data: {label: item.question, qtype: item.QuestionType
+    //         },
+    //     }]
+    //     )}
+    // )
+    console.log(newnodes.length)
+
+    for(let i=0;i<newnodes.length;i++){
+        let x = 10
+        let y = 10 + i*10
+        nod.push([
+            {
+                id: newnodes[i].id,
+                type: 'QuestionNode',
+                position: { x: x, y: y  },
+                data: {label: newnodes[i].question, qtype: newnodes[i].QuestionType
+                },
+            }
+        ])
+    }
+    console.log(nod)
+    let nod2 = []
+    for(let i=0;i<nod.length;i++){
+        nod2.push(nod[i][0])
+    }
+    console.log(nod2)
+  
+
+
+
+
+
+
+
+    // const initialEdges = newnodes.map((item) => {
+    //     return {
+    //         id: item.id,
+    //         source: item.id,
+    //         target: item.nextQuestion,
+    //         sourceHandle: 'a',
+    //         targetHandle: 'b',
+    //     }})
+   
+
+
+    // setNode(node => [...node, ...initialNodes])
+
+    console.log(nod)
     // {newnodes.map((node1) => {
     //     const { id, question, QuestionType } = node1;
     //     return (
@@ -112,15 +174,17 @@ const  Flow = () => {
     let initialEdges = [
         {   
             id: 'e1-2', 
-            source: 'a', 
-            sourceHandle: 'a', 
-            target: 'b' 
+            source: '1', 
+            target: '2' 
         },
     ];
-    console.log(newnodes)
+   
+    
 
   
-    const [nodes, setNodes] = useState(initialNodes);
+    const [nodes, setNodes] = useState(nod2);
+
+    
 
     // setNodes([
     //   ...nodes,
@@ -157,7 +221,7 @@ const  Flow = () => {
     //     Navigate("/rules")
     //   }
 
-    const nodeTypes = { QuestionNode: QuestionNode};
+    
     const defaultEdgeOptions = { markerEnd: {
         type: MarkerType.Arrow
     }};
