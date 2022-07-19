@@ -101,16 +101,6 @@
       }
     },
     {
-      "id": "2",
-      "formID": "mmc1g_l",
-      "QuestionType": "MultipleChoice",
-      "question": "new",
-      "option": {
-        "choice1": "ch11",
-        "choice2": "ch22"
-      }
-    },
-    {
       "id": 1,
       "formID": "rzjofEI",
       "QuestionType": "MultipleChoice",
@@ -118,16 +108,6 @@
       "options": {
         "choice1": "ch1",
         "choice2": "ch2"
-      }
-    },
-    {
-      "id": 2,
-      "formID": "rzjofEI",
-      "QuestionType": "MultipleChoice",
-      "question": "new",
-      "options": {
-        "choice1": "ch11",
-        "choice2": "ch22"
       }
     },
     {
@@ -206,14 +186,6 @@
       }
     },
     {
-      "id": "2",
-      "count": 1,
-      "formID": "amikMqm",
-      "QuestionType": "Text",
-      "question": "new",
-      "answer": "frggr"
-    },
-    {
       "id": "3",
       "count": 1,
       "formID": "amikMqm",
@@ -254,44 +226,91 @@
       }
     },
     {
-      "id": "d01b0eca-970c-4baa-89ce-db9ba2bab04c",
+      "id": "dc1228f7-0d8a-4654-8d15-138985269e8c",
       "count": 1,
       "formID": "amikMqm",
-      "QuestionType": "Text",
-      "question": "new",
-      "answer": "tete"
+      "QuestionType": "Statement",
+      "question": "ewfwef"
     },
     {
-      "id": "9057b288-c9cb-48e6-b7e4-e44625c5ce49",
+      "id": "f372099b-b88a-4011-86cc-02da10f48bec",
+      "count": 1,
+      "formID": "amikMqm",
+      "QuestionType": "MultipleChoice",
+      "question": "werwe",
+      "options": {
+        "choice1": "",
+        "choice2": ""
+      }
+    },
+    {
+      "id": "4b5c4ef1-2ef2-4dba-9fb9-f39048d15c63",
+      "count": 1,
+      "formID": "rzjofEI",
+      "QuestionType": "MultipleChoice",
+      "question": "werwe",
+      "options": {
+        "choice1": "",
+        "choice2": ""
+      }
+    },
+    {
+      "id": "bb5f878b-6ed9-48c5-9f63-70e96a4946f0",
+      "count": 2,
+      "formID": "rzjofEI",
+      "QuestionType": "MultipleChoice",
+      "question": "werwe",
+      "options": {
+        "choice1": "",
+        "choice2": ""
+      }
+    },
+    {
+      "id": "e3869ec9-6eff-4ee5-beec-4529e835b19d",
+      "count": 3,
+      "formID": "rzjofEI",
+      "QuestionType": "MultipleChoice",
+      "question": "werwe",
+      "options": {
+        "choice1": "",
+        "choice2": ""
+      }
+    },
+    {
+      "id": "0bdd3d9f-12e7-4c55-b765-5ee5c52fba19",
+      "count": 1,
+      "formID": "rzjofEI",
+      "QuestionType": "Statement",
+      "question": "werwr"
+    },
+    {
+      "id": "72068cc7-eb8b-43d9-8146-3ddcbf7a65e7",
+      "count": 1,
+      "formID": "amikMqm",
+      "QuestionType": "Statement",
+      "question": "fdf"
+    },
+    {
+      "id": "8b463b54-608d-4fdb-9fa9-e676982295f2",
       "count": 2,
       "formID": "amikMqm",
-      "QuestionType": "Text",
-      "question": "new",
-      "answer": "tete"
+      "QuestionType": "Statement",
+      "question": "fdf"
     },
     {
-      "id": "9736dda0-1acc-45f3-b373-5540211b5b0e",
+      "id": "a360f445-5d16-477d-8ca2-dc85940eac0b",
+      "count": 3,
+      "formID": "amikMqm",
+      "QuestionType": "Statement",
+      "question": "fdf"
+    },
+    {
+      "id": "a93403a2-1233-439d-9944-1fceaae24981",
       "count": 1,
       "formID": "amikMqm",
       "QuestionType": "Text",
-      "question": "sfsfsf",
-      "answer": "sfsfd"
-    },
-    {
-      "id": "7775d1f2-b02e-4d90-989d-4d79ae0d12d5",
-      "count": 1,
-      "formID": "amikMqm",
-      "QuestionType": "Text",
-      "question": "sfsf",
-      "answer": "sff"
-    },
-    {
-      "id": "916ad527-fec8-4a63-8e28-44109c02c6ea",
-      "count": 2,
-      "formID": "amikMqm",
-      "QuestionType": "Text",
-      "question": "sfds",
-      "answer": "fsffs"
+      "question": "dgfdf",
+      "answer": "dgd"
     }
   ]
 }

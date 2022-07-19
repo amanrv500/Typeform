@@ -59,6 +59,7 @@ const  Flow = () => {
         []
     );
 
+    const [nodes, setNodes] = useState([]);
     const eid = uuidv4();
     const url = `/Questions`;
     const [items, setItems] = useState([]) 
@@ -67,6 +68,10 @@ const  Flow = () => {
     let newnodes = [] 
     let nod = [];
     const [node1, setNode1] = useState([]);
+    let nod2 =[]
+    const [node2, setNode2] = useState([]);
+
+
     useEffect(() => {
         customaxios.get(url).then(
             (res) => {
@@ -75,6 +80,8 @@ const  Flow = () => {
             }
         );
     }, []);
+
+    
     for(let i=0;i<items.length;i++){
         if(items[i].formID===tid){
             newnodes.push(items[i])    
@@ -100,11 +107,10 @@ const  Flow = () => {
     //     }]
     //     )}
     // )
-    console.log(newnodes.length)
 
     for(let i=0;i<newnodes.length;i++){
-        let x = 10
-        let y = 10 + i*10
+        let x = 10 + i*10;
+        let y = 10 + i*20
         nod.push([
             {
                 id: newnodes[i].id,
@@ -116,11 +122,29 @@ const  Flow = () => {
         ])
     }
     console.log(nod)
-    let nod2 = []
+   
     for(let i=0;i<nod.length;i++){
         nod2.push(nod[i][0])
     }
+    // for(let i=0; i<newnodes.length;i++){
+    //     let x = 10 + i*10;
+    //     let y = 10 + i*20;
+    //     const newww = [
+    //         ...node2,
+    //         {
+    //             id: newnodes[i].id,
+    //             type: 'QuestionNode',
+    //             position: { x: x, y: y  },
+    //             data: {label: newnodes[i].question, qtype: newnodes[i].QuestionType
+    //             },
+    //         }
+    //     ]
+    //     setNode2(newww)
+    // }
+    console.log(node2)
+
     console.log(nod2)
+    console.log(nodes, "nwww")
   
 
 
@@ -182,8 +206,7 @@ const  Flow = () => {
     
 
   
-    const [nodes, setNodes] = useState(nod2);
-
+    
     
 
     // setNodes([
@@ -230,7 +253,7 @@ const  Flow = () => {
     
 
     return (
-        <ReactFlow nodes={nodes} onConnect={onConnect} edges={edges} onNodesChange={onNodesChange} nodeTypes={nodeTypes} defaultEdgeOptions={defaultEdgeOptions} fitView >
+        <ReactFlow nodes={nod2} onConnect={onConnect} edges={edges} onNodesChange={onNodesChange} nodeTypes={nodeTypes} defaultEdgeOptions={defaultEdgeOptions} fitView >
             <Controls />
             <Background color="#E0E0E0" />
         </ReactFlow>

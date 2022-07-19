@@ -12,6 +12,7 @@ const Questionpage = () => {
 
     const [questionShow, setQuestionShow] = useState(2);
     const [refresh, setRefresh] = useState(0);
+    
 
     return (
         <Container fluid className='vw-100 vw-100 p-0'>
@@ -19,7 +20,7 @@ const Questionpage = () => {
                 <Nav1 />
             </Row>
             <Row className='m-0 mt-5' style={{height:"94vh", width:"100vw"}} >
-                <Col className='border-end p-0 mx-0' lg='2'>
+                <Col className='border-end p-0 mx-0' lg='2' >
                     <LeftSideBar  changeState={state => setQuestionShow(state)} refresh={refresh} /> 
                 </Col>
                 <Col className=' mx-0 p-4 d-flex align-items-center justify-content-center bg-light' lg='8'>

@@ -99,7 +99,7 @@ const Questions = (props) => {
           ...ques,
           [name]: value,
         });
-        
+        props.refresh(Math.random());
     };
 
 

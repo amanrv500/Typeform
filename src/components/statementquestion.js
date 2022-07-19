@@ -27,7 +27,8 @@ const Statementquestion = (props) => {
           ...ques,
           [name]: value,
         });
-      };
+        props.refresh(Math.random());
+    };
 
    
     const apost = () => {

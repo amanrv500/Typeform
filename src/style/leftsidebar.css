@@ -12,4 +12,22 @@
     height: 35px;
     box-sizing: border-box;
 }
+.three-dots{
+    display: none;
+}
+
+.ques{
+    background-color: white;
+}
+.ques:hover{
+    background-color: rgb(237, 237, 237);
+}
+
+.ques:hover .three-dots{
+    
+    display: block;
+}
+.drpmenu{
+    background-color: rgb(255, 255, 255);
+}
 
