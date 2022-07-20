@@ -12,10 +12,10 @@ const Flowpage = () => {
                 <Nav2 />
             </Row>
             <Row className="vh-100">
-                <Col lg='10' className="border" >
+                <Col lg='10' className="border p-0" >
                     <Flow />
                 </Col>
-                <Col lg='2' className="border">
+                <Col lg='2' className="">
                     <RightSideBar />
                 </Col>
             </Row>

@@ -1,0 +1,10 @@
+.flw-brd{
+    height: 2.5rem;
+    width: 8rem;
+    background-color: white;
+    border: 1px solid #ececec;
+}
+
+.flw-brd:hover{
+    border: 1px solid #000000;
+}
