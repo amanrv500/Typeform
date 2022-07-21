@@ -17,7 +17,7 @@ const QuestionNode = ({data}) => {
                 if (data.qtype === 'Text') {
                     return (
                         <>
-                            <Handle type="source" position={Position.Left} />
+                            <Handle type="target" position={Position.Left} />
                             <span className="d-flex">
                                     <span className="rounded px-1 d-flex align-items-center me-2" style = {{backgroundColor:"#379CFB"}}>
                                         <CgTranscript/>
@@ -26,7 +26,7 @@ const QuestionNode = ({data}) => {
                                         {data.label}
                                     </span>
                             </span>
-                            <Handle type="target" position={Position.Right} className='d-flex align-items-center'>
+                            <Handle type="source" position={Position.Right} className='d-flex align-items-center'>
                                 <HiPlusCircle />
                             </Handle>
                         </>
@@ -35,7 +35,7 @@ const QuestionNode = ({data}) => {
                 else if (data.qtype === 'MultipleChoice') {
                     return (
                         <>
-                            <Handle type="source" position={Position.Left} />
+                            <Handle type="target" position={Position.Left} />
                             <span className="d-flex">
                                 <span className="rounded px-1 d-flex align-items-center me-2" style = {{backgroundColor:"#D65C99"}}>
                                     <GoCheck/>
@@ -44,14 +44,14 @@ const QuestionNode = ({data}) => {
                                     {data.label}
                                 </span>
                             </span>
-                            <Handle type="target" position={Position.Right} />
+                            <Handle type="source" position={Position.Right} />
                         </>
                     )
                 } 
                 else if (data.qtype === 'Statement') {
                     return (
                         <>
-                            <Handle type="source" position={Position.Left} />
+                            <Handle type="target" position={Position.Left} />
                             <span className="d-flex">
                                     <span className="rounded px-1 d-flex align-items-center me-2" style = {{backgroundColor:"#FBA137"}}>
                                         <IoIosQuote/>
@@ -60,7 +60,7 @@ const QuestionNode = ({data}) => {
                                         {data.label}
                                     </span>
                             </span>
-                            <Handle type="target" position={Position.Right} />
+                            <Handle type="source" position={Position.Right} />
                         </>
                     )
                 }

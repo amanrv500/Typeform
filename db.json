@@ -79,103 +79,6 @@
   "Questions": [
     {
       "id": "1",
-      "formID": "mmc1g_l",
-      "QuestionType": "Text",
-      "question": "new",
-      "answer": "ans"
-    },
-    {
-      "id": "1",
-      "formID": "mmc1g_l",
-      "QuestionType": "Statement",
-      "question": "newwer"
-    },
-    {
-      "id": "1",
-      "formID": "mmc1g_l",
-      "QuestionType": "MultipleChoice",
-      "question": "ques",
-      "option": {
-        "choice1": "ch1",
-        "choice2": "ch2"
-      }
-    },
-    {
-      "id": 1,
-      "formID": "rzjofEI",
-      "QuestionType": "MultipleChoice",
-      "question": "yoo ",
-      "options": {
-        "choice1": "ch1",
-        "choice2": "ch2"
-      }
-    },
-    {
-      "id": 3,
-      "formID": "rzjofEI",
-      "QuestionType": "Statement",
-      "question": "this is a car"
-    },
-    {
-      "id": 4,
-      "formID": "rzjofEI",
-      "QuestionType": "MultipleChoice",
-      "question": "how many ",
-      "options": {
-        "choice1": "one",
-        "choice2": "two"
-      }
-    },
-    {
-      "id": 5,
-      "formID": "rzjofEI",
-      "QuestionType": "MultipleChoice",
-      "question": "how many ",
-      "options": {
-        "choice1": "one",
-        "choice2": "two"
-      }
-    },
-    {
-      "id": 6,
-      "formID": "rzjofEI",
-      "QuestionType": "MultipleChoice",
-      "question": "how many ",
-      "options": {
-        "choice1": "one",
-        "choice2": "two"
-      }
-    },
-    {
-      "id": 7,
-      "formID": "rzjofEI",
-      "QuestionType": "MultipleChoice",
-      "question": "how many",
-      "options": {
-        "choice1": "one",
-        "choice2": "two"
-      }
-    },
-    {
-      "id": 8,
-      "formID": "rzjofEI",
-      "QuestionType": "Statement",
-      "question": "hey there"
-    },
-    {
-      "id": 9,
-      "formID": "rzjofEI",
-      "QuestionType": "Statement",
-      "question": "hey there"
-    },
-    {
-      "id": 10,
-      "formID": "rzjofEI",
-      "QuestionType": "Statement",
-      "question": "hey there"
-    },
-    {
-      "id": "1",
       "count": 1,
       "formID": "amikMqm",
       "QuestionType": "MultipleChoice",
@@ -282,35 +185,6 @@
       "formID": "rzjofEI",
       "QuestionType": "Statement",
       "question": "werwr"
-    },
-    {
-      "id": "72068cc7-eb8b-43d9-8146-3ddcbf7a65e7",
-      "count": 1,
-      "formID": "amikMqm",
-      "QuestionType": "Statement",
-      "question": "fdf"
-    },
-    {
-      "id": "8b463b54-608d-4fdb-9fa9-e676982295f2",
-      "count": 2,
-      "formID": "amikMqm",
-      "QuestionType": "Statement",
-      "question": "fdf"
-    },
-    {
-      "id": "a360f445-5d16-477d-8ca2-dc85940eac0b",
-      "count": 3,
-      "formID": "amikMqm",
-      "QuestionType": "Statement",
-      "question": "fdf"
-    },
-    {
-      "id": "a93403a2-1233-439d-9944-1fceaae24981",
-      "count": 1,
-      "formID": "amikMqm",
-      "QuestionType": "Text",
-      "question": "dgfdf",
-      "answer": "dgd"
     }
   ]
 }

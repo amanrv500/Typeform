@@ -9,11 +9,18 @@ import {TiSortAlphabetically} from "react-icons/ti";
 import { Container,Row,Col, Button,Form,Dropdown,DropdownButton } from "react-bootstrap";
 import Popup from "./popup";
 
-const Typeformbar = () =>{
+const Typeformbar = (props) =>{
     const [show, setShow] = useState(false);
+
+    const grid = () =>{
+        props.show('grid');
+    }
+    const list = () =>{
+        props.show('list');
+    }
    
    return ( 
-    <Container fluid className="h-50 mt-5 border-bottom bg-light"  >
+    <Container fluid className="h-50 mt-5 border-bottom" style={{backgroundColor:"#FAFAFA"}} >
         <br/>
         <br/>
         <br/>
@@ -33,7 +40,7 @@ const Typeformbar = () =>{
                 </span>
             </Col>
             <Col className="d-md-flex d-sm-flex d-lg-flex d-none  justify-content-end" lg='2' xl='2' md='3' sm='2'>
-                <DropdownButton className=""  variant="grey-100" title="Date Created" style = {{ border:"black", boxShadow:"black",backgroundColor:"#E3E3E3",outline:"none"}}>
+                <DropdownButton className="rounded"  variant="grey-300" title="Date Created" style = {{ border:"black", boxShadow:"black",backgroundColor:"#E3E3E3",outline:"none"}}>
                     <Dropdown.Item >
                         <span className="d-flex align-items-center" >
                             <AiOutlineClockCircle color="#737373" className="p-0 me-1"/>
@@ -46,7 +53,7 @@ const Typeformbar = () =>{
                             Last Updated
                         </span>
                     </Dropdown.Item>
-                    <Dropdown.Item >
+                    <Dropdown.Item className="mb-0">
                         <span className="d-flex align-items-center">
                             <TiSortAlphabetically color="#737373" className="p-0 me-1"/>
                             Alphabetical
@@ -56,13 +63,13 @@ const Typeformbar = () =>{
             </Col>
             <Col className="d-lg-flex d-sm-none d-none d-md-none justify-content-end" lg='3' xl='3'>
                 <span>
-                    <Button variant="secondary">
+                    <Button variant="secondary" onClick={grid}>
                         <span className="d-flex align-items-center">
                             <BsGrid3X3GapFill color="white" className="p-0 me-1"/>
                             Grid
                         </span>
                     </Button>
-                    <Button variant="none" style = {{backgroundColor:"#E3E3E3"}}>
+                    <Button variant="none" style = {{backgroundColor:"#E3E3E3"}} onClick={list}>
                         <span className="d-flex align-items-center">
                             <HiViewList  className="p-0 me-1"/>
                             List

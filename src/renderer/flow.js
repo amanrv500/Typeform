@@ -14,8 +14,6 @@ import QuestionNode from './questionnode.js';
 import customaxios from '../api/customaxios.js';
 import {useNavigate} from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import Nodes from './nodes.js';
-import Edges from './edges.js';
 import {v4 as uuidv4} from 'uuid';
 
 // let newEdges = [
@@ -35,13 +33,34 @@ const  Flow = () => {
     );
 
     const [nodes, setNodes] = useState([]);
+    const [edges, setEdges] = useState([]);
     const eid = uuidv4();
     const url = `/Questions`;
-    const [items, setItems] = useState([]) 
     const param = useParams();
     const tid = param.id;
+
+    const edge = () => {
+        customaxios.get(url).then((res) => {
+            const alldata = res.data;
+            let edg = [];
+            if (alldata?.length) {
+                for(let i=0;i<alldata.length-1;i++){
+                    if(alldata[i].formID===tid){
+                        edg.push({
+                            id: eid,
+                            source: alldata[i].id,
+                            target: alldata[i+1].id,
+                        });
+                    }
+                }
+            }
+            console.log(edg);
+            setEdges(edg);
+        });
+    }
+
    
-    const data = () => {
+    const node = () => {
         customaxios.get(url).then((res) => {
             const alldata = res.data;
             let nod = [];
@@ -49,8 +68,8 @@ const  Flow = () => {
             if (alldata?.length) {
                 alldata.forEach((element, i) => {
                     if (element.formID === tid) {
-                        let x = 10 + count++ * 15;
-                        let y = 10 + count++ * 25;
+                        let x = 10 + count++ * 200;
+                        let y = 10;
                         nod.push({
                             id: element.id,
                             type: 'QuestionNode',
@@ -68,37 +87,18 @@ const  Flow = () => {
     };
 
     useEffect(() => {
-        data();
+        node();
+        edge();
     }, []);
-
-    // const initialEdges = newnodes.map((item) => {
-    //     return {
-    //         id: item.id,
-    //         source: item.id,
-    //         target: item.nextQuestion,
-    //         sourceHandle: 'a',
-    //         targetHandle: 'b',
-    //     }})
-   
-    let initialEdges = [
-        {   
-            id: 'e1-2', 
-            source: '1', 
-            target: '2' 
-        },
-    ];
-   
-    const [edges, setEdges] = useState(initialEdges);
-     
 
     const onNodesChange = useCallback(
         (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
         [setNodes]
     );
-    //   const onEdgesChange = useCallback(
-    //     (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-    //     [newEdges]
-    //   );
+      const onEdgesChange = useCallback(
+        (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
+        // [newEdges]
+      );
 
    
     const onConnect = useCallback(
@@ -114,11 +114,11 @@ const  Flow = () => {
     
     const defaultEdgeOptions = { markerEnd: {
         type: MarkerType.Arrow,
-        style: { 
-            stroke: "red", 
-            strokeWidth: 30, 
-            cursor: "pointer" 
-        }
+        // style: { 
+        //     stroke: "red", 
+        //     strokeWidth: 30, 
+        //     cursor: "pointer" 
+        // }
     }};
 
     return (
@@ -133,7 +133,6 @@ const  Flow = () => {
             defaultZoom={0.5}
             defaultPosition={[0, 0]}
             zoomOnScroll={false}
-            
             >
             <Controls />
             <Background 
