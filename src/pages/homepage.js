@@ -8,7 +8,7 @@ const Homepage = () => {
   return (
       <div >
         <Navbar1 />
-        <Typeformbar show={show => setShow(show)} />
+        <Typeformbar show={show => setShow(show)} list={show} />
         <Typeform show={show}/>
       </div>
   );
