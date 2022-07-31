@@ -5,11 +5,12 @@ import Typeform from '../components/typeforms';
 
 const Homepage = () => {
   const [show, setShow] = useState('grid');
+  const [sortby, setSortby] = useState(1);
   return (
       <div >
         <Navbar1 />
-        <Typeformbar show={show => setShow(show)} list={show} />
-        <Typeform show={show}/>
+        <Typeformbar show={show => setShow(show)} list={show} sortby={sort => setSortby(sort)} />
+        <Typeform show={show} sortby={sortby}/>
       </div>
   );
 }

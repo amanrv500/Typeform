@@ -1,10 +1,18 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect,
+                useState } from "react";
 import customaxios from "../api/customaxios";
 import { useNavigate } from "react-router-dom";
 import {AiFillEdit} from "react-icons/ai"
 import {AiFillDelete} from "react-icons/ai";
 import '../style/typeforms.css'
-import { Card, Col, Container, Row, Modal,Button, FormControl,Dropdown} from "react-bootstrap";
+import { Card, 
+         Col, 
+         Container, 
+         Row, 
+         Modal,
+         Button, 
+         FormControl,
+         Dropdown} from "react-bootstrap";
 import DropdownToggle from "react-bootstrap/esm/DropdownToggle";
 import {RiDeleteBin5Line} from "react-icons/ri";
 import {BsThreeDotsVertical} from "react-icons/bs";
@@ -25,8 +33,22 @@ const Typeform = (props) => {
         setTypeid(id);
         setShow(true)
     }
+
+    const date = new Date();
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+    const day = date.getDate();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+    const second = date.getSeconds();
+    const dateString = `${day}-${month}-${year}`;
+    const modificationTime = `${day}-${month}-${year} ${hour}:${minute}:${second}`;
+
     const updateName = () => {
-        customaxios.patch(`${url}/${typeid}`,{name: names})
+        customaxios.patch(`${url}/${typeid}`,{
+            name: names,
+            modificationTime: modificationTime
+        })
         .then(res => {
             console.log(res);
             setShow(false)
@@ -56,7 +78,49 @@ const Typeform = (props) => {
                 console.log(res);
                 setForms(res.data);
             });
-    },[]) 
+    },[])
+
+    const sortByDate = () => {
+        items.sort((a, b) => {
+            let da = new Date(a.date),
+                db = new Date(b.date);
+            return da - db;
+        });
+    }
+    
+
+    const sortByLastUpdated = () => {
+        items.sort((a, b) => {
+            return new Date(b.modificationTime) - new Date(a.modificationTime);
+        });
+    }
+
+   
+    const sortByAlphabetical = () => {
+        items.sort((a, b) => {
+            if (a.name < b.name) {
+                return -1;
+            }
+            if (a.name > b.name) {
+                return 1;
+            }
+            return 0;
+        });
+    }
+
+    if(props.sortby === 1){
+        sortByDate();
+    }
+    else if(props.sortby === 2){
+        sortByLastUpdated();
+    }
+    else if(props.sortby === 3){
+        sortByAlphabetical();
+    }
+    else{
+        sortByDate();
+    }
+
 
     if(props.show === 'grid'){
         return ( 
@@ -67,14 +131,20 @@ const Typeform = (props) => {
                         return(
                             <Col key={id} >
                                 <Card className="grid1 m-2" > 
-                                    <Card.Body className='p-0 d-flex align-items-center justify-content-center' onClick={()=>Navigate(`/homepage/${id}`)}>
+                                    <Card.Body 
+                                        className='p-0 d-flex align-items-center justify-content-center' 
+                                        onClick={()=>Navigate(`/homepage/${id}`)}>
                                         <p className='px-1 m-4 ' >
                                             {name}
                                         </p>
                                     </Card.Body>
                                     <Card.Footer className="border-top m-0 p-2 d-flex align-items-center justify-content-between">
-                                        <AiFillEdit color="#a0a0a0"  onClick={()=>{updateId(id)}}/>
-                                        <AiFillDelete color="#a0a0a0" onClick={() =>{deleteId(id)}} />
+                                        <AiFillEdit 
+                                            color="#a0a0a0"  
+                                            onClick={()=>{updateId(id)}}/>
+                                        <AiFillDelete 
+                                            color="#a0a0a0" 
+                                            onClick={() =>{deleteId(id)}} />
                                     </Card.Footer>
                                 </Card>
                             </Col>
@@ -86,10 +156,17 @@ const Typeform = (props) => {
                         <Modal.Title>Edit Typeform Name</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <FormControl onChange={(e)=> {setNames(e.target.value)}} id='name' placeholder="Enter the Name Here!"  type="text" style={{border: "none"}}/>
+                        <FormControl 
+                            onChange={(e)=> {setNames(e.target.value)}} 
+                            id='name' 
+                            placeholder="Enter the Name Here!"  
+                            type="text" 
+                            style={{border: "none"}}/>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={updateName}>
+                        <Button 
+                            variant="secondary" 
+                            onClick={updateName}>
                             Save Changes
                         </Button>
                     </Modal.Footer>
@@ -113,32 +190,54 @@ const Typeform = (props) => {
                     </Col>
                 </Row>
                 { items && items.map(item=> {
-                    const { id, name } = item;
+                    const { id, name, date } = item;
                     return(
-                        <Row className="border p-1 mx-3 my-2 bg-white list1" key={id} >
-                            <Col className='d-flex align-items-center' onClick={()=>Navigate(`/homepage/${id}`)} >
-                                <span className='p-2'>
-                                    {name}
+                        <Row 
+                            className="border p-1 mx-3 my-2 bg-white list1" 
+                            key={id} >
+                            <Col 
+                                className='d-flex align-items-center justify-content-start' 
+                                onClick={()=>Navigate(`/homepage/${id}`)} >
+                                <span className=' m-0 d-flex flex-column'>
+                                    <p className=" m-0">
+                                        {name}
+                                    </p>
+                                    <p className="text-secondary m-0" 
+                                        style={{fontSize:"12px"}}>
+                                        Created: {date}
+                                    </p>
                                 </span>
                             </Col>
                             <Col className='d-flex justify-content-between' >
-                                <span className='d-flex align-items-center w-90 ps-4 ' onClick={()=>Navigate(`/homepage/${id}`)}>
+                                <span 
+                                    className='d-flex align-items-center w-90 ps-4 ' 
+                                    onClick={()=>Navigate(`/homepage/${id}`)}>
                                     {getItems(id)}
                                 </span>
-                                <div  className="three-dots">
-                                    <Dropdown drop="bottom" className=' m-0 p-0'>
-                                        <DropdownToggle variant="none" className="dt">
+                                <div  className="three-dots p-0">
+                                    <Dropdown 
+                                        drop="bottom" 
+                                        className='m-0 p-0'>
+                                        <DropdownToggle 
+                                            variant="none" 
+                                            className="dt">
                                             <BsThreeDotsVertical />
                                         </DropdownToggle>
-                                        <Dropdown.Menu style={{zIndex:'4'}} className="shadow-sm drpmenu">
+                                        <Dropdown.Menu 
+                                            style={{zIndex:'4'}} 
+                                            className="shadow-sm drpmenu">
                                             <Dropdown.Item >
-                                                <span className="d-flex align-items-center" onClick={() =>{deleteId(id)}}  >
+                                                <span 
+                                                    className="d-flex align-items-center" 
+                                                    onClick={() =>{deleteId(id)}}  >
                                                     <RiDeleteBin5Line className="me-2"/>
                                                     Delete
                                                 </span>
                                             </Dropdown.Item>
                                             <Dropdown.Item >
-                                                <span className="d-flex align-items-center" onClick={()=>{updateId(id)}} >
+                                                <span 
+                                                    className="d-flex align-items-center" 
+                                                    onClick={()=>{updateId(id)}} >
                                                     <AiFillEdit className="me-2"/>
                                                     Edit Name
                                                 </span>
@@ -155,10 +254,17 @@ const Typeform = (props) => {
                         <Modal.Title>Edit Typeform Name</Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <FormControl onChange={(e)=> {setNames(e.target.value)}} id='name' placeholder="Enter the Name Here!"  type="text" style={{border: "none"}}/>
+                        <FormControl 
+                            onChange={(e)=> {setNames(e.target.value)}} 
+                            id='name' 
+                            placeholder="Enter the Name Here!"  
+                            type="text" 
+                            style={{border: "none"}}/>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="secondary" onClick={updateName}>
+                        <Button 
+                            variant="secondary" 
+                            onClick={updateName}>
                             Save Changes
                         </Button>
                     </Modal.Footer>

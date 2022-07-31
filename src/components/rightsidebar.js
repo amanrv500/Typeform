@@ -15,7 +15,7 @@ const RightSideBar = (props) =>{
     let Navigate  = useNavigate();
     const param = useParams();
     const tid = param.id;
-    // const { id, name} = data
+    
 
     const formatOptionLabel = ({ id, name}) => {
         if(id==="1")
