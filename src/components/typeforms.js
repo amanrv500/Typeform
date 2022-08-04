@@ -41,8 +41,8 @@ const Typeform = (props) => {
     const hour = date.getHours();
     const minute = date.getMinutes();
     const second = date.getSeconds();
-    const dateString = `${day}-${month}-${year}`;
-    const modificationTime = `${day}-${month}-${year} ${hour}:${minute}:${second}`;
+    // const dateString = `${day}-${month}-${year}`;
+    const modificationTime = `${day}-${month}-${year}-${hour}-${minute}-${second}`;
 
     const updateName = () => {
         customaxios.patch(`${url}/${typeid}`,{
@@ -82,8 +82,8 @@ const Typeform = (props) => {
 
     const sortByDate = () => {
         items.sort((a, b) => {
-            let da = new Date(a.date),
-                db = new Date(b.date);
+            let da = new Date(a.dateCreated),
+                db = new Date(b.dateCreated);
             return da - db;
         });
     }
@@ -91,7 +91,9 @@ const Typeform = (props) => {
 
     const sortByLastUpdated = () => {
         items.sort((a, b) => {
-            return new Date(b.modificationTime) - new Date(a.modificationTime);
+            let da = new Date(a.modificationTime),
+                db = new Date(b.modificationTime);
+            return db - da;
         });
     }
 
@@ -108,17 +110,22 @@ const Typeform = (props) => {
         });
     }
 
-    if(props.sortby === 1){
+     const getDate = (date) => {
+        const dateString = date.split("-");
+        const year = dateString[2];
+        const month = dateString[1];
+        const day = dateString[0];
+        return `${day}-${month}-${year}`;
+    }
+
+    if(props.sortby === 'dateCreated'){
         sortByDate();
     }
-    else if(props.sortby === 2){
+    if(props.sortby === 'lastUpdated'){
         sortByLastUpdated();
     }
-    else if(props.sortby === 3){
+    if(props.sortby === 'alphabetical'){
         sortByAlphabetical();
-    }
-    else{
-        sortByDate();
     }
 
 
@@ -183,14 +190,17 @@ const Typeform = (props) => {
                             Typeform
                         </span>
                     </Col>
-                    <Col className='text-black-50'>
-                        <span>
+                    <Col className='text-black-50 d-flex justify-content-evenly'>
+                        <span className=" ps-3 ms-2">
                             Questions
+                        </span>
+                        <span className=" ms-0 pe-5 me-5 ">
+                            Updated
                         </span>
                     </Col>
                 </Row>
                 { items && items.map(item=> {
-                    const { id, name, date } = item;
+                    const { id, name, dateCreated, modificationTime } = item;
                     return(
                         <Row 
                             className="border p-1 mx-3 my-2 bg-white list1" 
@@ -204,15 +214,20 @@ const Typeform = (props) => {
                                     </p>
                                     <p className="text-secondary m-0" 
                                         style={{fontSize:"12px"}}>
-                                        Created: {date}
+                                        Created: {dateCreated}
                                     </p>
                                 </span>
                             </Col>
                             <Col className='d-flex justify-content-between' >
                                 <span 
-                                    className='d-flex align-items-center w-90 ps-4 ' 
+                                    className='d-flex align-items-center justify-content-evenly w-90 ps-4 ' 
                                     onClick={()=>Navigate(`/homepage/${id}`)}>
-                                    {getItems(id)}
+                                        <span>
+                                            {getItems(id)}
+                                        </span>
+                                        <span>
+                                            {getDate(modificationTime)}
+                                        </span>
                                 </span>
                                 <div  className="three-dots p-0">
                                     <Dropdown 

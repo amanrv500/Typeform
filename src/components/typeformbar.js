@@ -39,7 +39,7 @@ const Typeformbar = (props) =>{
     const formatOptionLabel = ({ id, name}) => {
         if(id==="1")
             return (
-                <span className="d-flex align-items-center m-0" onClick={props.sortby(1)}>
+                <span className="d-flex align-items-center m-0" onClick={props.sortby("dateCreated")}>
                     <AiOutlineClockCircle 
                         color="#737373" 
                         className="p-0 me-2"/>
@@ -48,7 +48,7 @@ const Typeformbar = (props) =>{
             )
         else if(id==="2")
             return (
-                <span className="d-flex align-items-center m-0" onClick={props.sortby(2)}>
+                <span className="d-flex align-items-center m-0" onClick={props.sortby("lastUpdated")}>
                     <BsPencilFill 
                         color="#737373" 
                         className="p-0 me-2"/>
@@ -57,7 +57,7 @@ const Typeformbar = (props) =>{
             )
         else if(id==="3")
             return (
-                <span className="d-flex align-items-center m-0" onClick={props.sortby(3)}>
+                <span className="d-flex align-items-center m-0" onClick={props.sortby("alphabetical")}>
                     <TiSortAlphabetically 
                         color="#737373" 
                         className="p-0 me-2"/>

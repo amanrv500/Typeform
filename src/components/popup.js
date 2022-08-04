@@ -24,15 +24,15 @@ const Popup = (props) =>{
     const hour = date.getHours();
     const minute = date.getMinutes();
     const second = date.getSeconds();
-    const dateString = `${day}-${month}-${year}`;
-    const modificationTime = `${day}-${month}-${year} ${hour}:${minute}:${second}`;
+    const dateCreated = `${day}-${month}-${year}`;
+    const modificationTime = `${day}-${month}-${year}/${hour}-${minute}-${second}`;
    
     
 
     const submit = () => {
         customaxios.post(url, {
             name: data.name,
-            date: dateString,
+            dateCreated: dateCreated,
             modificationTime: modificationTime
         }).then(res => {
             console.log(res.data)

@@ -5,7 +5,7 @@ import Typeform from '../components/typeforms';
 
 const Homepage = () => {
   const [show, setShow] = useState('grid');
-  const [sortby, setSortby] = useState(1);
+  const [sortby, setSortby] = useState("dateCreated");
   return (
       <div >
         <Navbar1 />
