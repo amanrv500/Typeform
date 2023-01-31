@@ -7,7 +7,7 @@ import {IoIosQuote} from "react-icons/io"
 import Select from 'react-select';
 import { useNavigate, useParams } from "react-router-dom";
 import '../style/rightsidebar.css'
-import data from "../forms/forms";
+import data from "../react-select/forms";
 
 
 
@@ -79,10 +79,10 @@ const RightSideBar = (props) =>{
             <Row className="w-100 m-0">
                 <Select defaultValue="Choose" formatOptionLabel={formatOptionLabel} options={data} className='w-100' />
             </Row>
-            <Row className="border-top mt-5 px-0 font">
+            {/* <Row className="border-top mt-5 px-0 font">
                 Image or Video
                 <input type="file" className="w-40 h-25 mx-4" />
-            </Row>
+            </Row> */}
         </>
     );
 }

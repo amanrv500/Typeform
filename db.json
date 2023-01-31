@@ -3,36 +3,36 @@
     {
       "id": 1,
       "username": "John",
-      "email": "hjvjh",
+      "email": "john@doe.com",
       "password": "doe "
     },
     {
-      "username": "jhbjb",
-      "password": "khb",
-      "email": "khjjh",
+      "username": "Davis fierk",
+      "password": "armoredkitten",
+      "email": "davisfierk@hotmail.com",
       "id": 2
     },
     {
-      "username": "jhbjb ",
-      "password": "khb",
-      "email": "khjjh",
+      "username": "emilly",
+      "password": "ilovecalifornia",
+      "email": "emillyblosk@gmail.com",
       "id": 3
     },
     {
       "username": "aman",
       "password": "pwd",
-      "email": "aman2yes.com",
+      "email": "aman@yes.com",
       "id": 4
     },
     {
-      "username": "Form 1",
-      "password": "pwd",
+      "username": "johny",
+      "password": "beforeyougo",
       "id": 5
     },
     {
       "username": "amank",
-      "password": "kumar",
-      "email": "aman@man.com",
+      "password": "manipal",
+      "email": "amankumar@gmail.com",
       "id": 6
     },
     {
@@ -43,14 +43,14 @@
     },
     {
       "username": "aman",
-      "email": "aman",
-      "password": "aman",
+      "email": "amanrv@gmail.com",
+      "password": "password",
       "id": 8
     },
     {
       "username": "aman",
       "email": "aman@aman.com",
-      "password": "aman",
+      "password": "amaninmanipal",
       "id": 9
     }
   ],
@@ -84,12 +84,6 @@
       "dateCreated": "4-6-2022",
       "modificationTime": "1-8-2022-10-40-17",
       "id": "amikMqm"
-    },
-    {
-      "name": "todayform",
-      "dateCreated": "31-7-2022",
-      "modificationTime": "1-8-2022-10-38-54",
-      "id": "kDqtMbR"
     }
   ],
   "Questions": [
@@ -109,14 +103,14 @@
       "count": 1,
       "formID": "amikMqm",
       "QuestionType": "Statement",
-      "question": "fdrgegre"
+      "question": "whats your score"
     },
     {
       "id": "f8bbf579-e3e1-49e8-a7b9-60fb25a0afb7",
       "count": 1,
       "formID": "amikMqm",
       "QuestionType": "MultipleChoice",
-      "question": "ertre",
+      "question": "Rate us",
       "options": {
         "choice1": "",
         "choice2": ""
@@ -127,18 +121,7 @@
       "count": 1,
       "formID": "amikMqm",
       "QuestionType": "MultipleChoice",
-      "question": "what",
-      "options": {
-        "choice1": "",
-        "choice2": ""
-      }
-    },
-    {
-      "id": "b4689b9a-4499-46fa-9c94-53e9cda7e157",
-      "count": 2,
-      "formID": "amikMqm",
-      "QuestionType": "MultipleChoice",
-      "question": "what",
+      "question": "How much Satisfied you are",
       "options": {
         "choice1": "",
         "choice2": ""
@@ -148,7 +131,7 @@
       "id": "dc1228f7-0d8a-4654-8d15-138985269e8c",
       "count": 1,
       "formID": "amikMqm",
-      "QuestionType": "Statement",
+      "QuestionType": "Address",
       "question": "ewfwef"
     },
     {
@@ -156,7 +139,7 @@
       "count": 1,
       "formID": "amikMqm",
       "QuestionType": "MultipleChoice",
-      "question": "werwe",
+      "question": "Feedback",
       "options": {
         "choice1": "",
         "choice2": ""
@@ -167,7 +150,7 @@
       "count": 1,
       "formID": "rzjofEI",
       "QuestionType": "MultipleChoice",
-      "question": "werwe",
+      "question": "Rating",
       "options": {
         "choice1": "",
         "choice2": ""
@@ -178,7 +161,7 @@
       "count": 2,
       "formID": "rzjofEI",
       "QuestionType": "MultipleChoice",
-      "question": "werwe",
+      "question": "Grading",
       "options": {
         "choice1": "",
         "choice2": ""
@@ -189,7 +172,7 @@
       "count": 3,
       "formID": "rzjofEI",
       "QuestionType": "MultipleChoice",
-      "question": "werwe",
+      "question": "Scaling",
       "options": {
         "choice1": "",
         "choice2": ""
@@ -200,7 +183,15 @@
       "count": 1,
       "formID": "rzjofEI",
       "QuestionType": "Statement",
-      "question": "werwr"
+      "question": "Subject"
+    },
+    {
+      "id": "42b9b1f8-e7cd-4cd7-9574-19fe7d4319f5",
+      "count": 1,
+      "formID": "amikMqm",
+      "QuestionType": "Text",
+      "question": "College Name",
+      "answer": "MIT"
     }
   ]
 }

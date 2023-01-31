@@ -27,10 +27,10 @@
 .list1:hover{
     box-shadow: 8px 8px 8px rgba(37, 37, 37, 0.14);
 }
-.three-dots{
+.three-dot{
     display: none !important;
 }
-.list1:hover .three-dots{
+.list1:hover .three-dot{
     display: block !important;
 }
 

@@ -6,6 +6,7 @@ import customaxios from "../api/customaxios";
 import { useNavigate } from "react-router-dom";
 import { HiViewList } from "react-icons/hi"
 import Select from 'react-select';
+import data from "../react-select/sort";
 import { BsPencilFill } from "react-icons/bs";
 import {AiOutlineClockCircle} from "react-icons/ai";
 import {TiSortAlphabetically} from "react-icons/ti";
@@ -22,12 +23,6 @@ import Popup from "./popup";
 
 
 const Typeformbar = (props) =>{
-
-    const sort = [
-        { id: '1', name: "Date Created"},
-        { id: '2', name: "Last Updated"},
-        { id: '3', name: "Alphabetical"}
-    ];
 
     const url = '/typeforms'
     const [show, setShow] = useState(false);
@@ -143,9 +138,9 @@ const Typeformbar = (props) =>{
                 md='3' 
                 sm='2'>
                 <Select 
-                    defaultValue={sort[0]} 
+                    defaultValue={data[0]} 
                     formatOptionLabel={formatOptionLabel} 
-                    options={sort} 
+                    options={data} 
                     getOptionValue={(option) => option.id}
                     className='w-90 m-0 p-0' 
                     isSearchable={false} 

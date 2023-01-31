@@ -2,10 +2,10 @@ import React,{useState} from 'react';
 import Nav1 from "../components/nav1";
 import RightSideBar from '../components/rightsidebar';
 import LeftSideBar from '../components/leftsidebar';
-import Questions from '../components/mcqquestions';
+import McqQuestions from '../formtypes/mcqquestions';
 import '../style/questionpage.css'
-import Textquestion from '../components/textquestion';
-import Statementquestion from '../components/statementquestion';
+import TextQuestion from '../formtypes/textquestion';
+import StatementQuestion from '../formtypes/statementquestion';
 import { Col, Container, Row } from 'react-bootstrap';
 
 const Questionpage = () => {
@@ -26,13 +26,13 @@ const Questionpage = () => {
                 <Col className=' mx-0 p-4 d-flex align-items-center justify-content-center bg-light' lg='8'>
                     {(() => {
                         if (questionShow === 1) {
-                            return <Textquestion refresh={refresh => setRefresh(refresh)} />
+                            return <TextQuestion refresh={refresh => setRefresh(refresh)} />
                         } 
                         else if (questionShow === 2) {
-                            return <Questions refresh={refresh => setRefresh(refresh)} />
+                            return <McqQuestions refresh={refresh => setRefresh(refresh)} />
                         } 
                         else if (questionShow === 3) {
-                            return <Statementquestion refresh={refresh => setRefresh(refresh)} />
+                            return <StatementQuestion refresh={refresh => setRefresh(refresh)} />
                         }
                     })()}
                 </Col>

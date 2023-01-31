@@ -229,7 +229,7 @@ const Typeform = (props) => {
                                             {getDate(modificationTime)}
                                         </span>
                                 </span>
-                                <div  className="three-dots p-0">
+                                <div  className="three-dot p-0">
                                     <Dropdown 
                                         drop="bottom" 
                                         className='m-0 p-0'>
